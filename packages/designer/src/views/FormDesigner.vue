@@ -30,49 +30,76 @@
     </div>
     <div class="center-board common-board">
       <div class="action-bar">
-        <div class="center-board-main">
-          <ScrollContainer>
-            <a-row class="center-board-row" :gutter="formConf.gutter || 15">
-              <a-form
-                :colon="formConf.colon"
-                :size="formConf.size"
-                :layout="formConf.labelPosition === 'top' ? 'vertical' : 'horizontal'"
-                :labelAlign="formConf.labelPosition === 'right' ? 'right' : 'left'">
-                <draggable class="drawing-board" v-model="drawingList" :animation="300" group="componentsGroup" item-key="renderKey" @end="onCenterEnd">
-                  <template #item="{ element, index }">
-                    <draggable-item
-                      :key="element.renderKey"
-                      :drawing-list="drawingList"
-                      :element="element"
-                      :index="index"
-                      :form-conf="formConf"
-                      @activeItem="activeFormItem"
-                      @copyItem="drawingItemCopy" />
-                  </template>
-                </draggable>
-                <div v-show="!drawingList.length" class="empty-info">
-                  empty
-                  <!-- <img src="@/assets/images/emptyElement.png" class="empty-img" /> -->
-                </div>
-              </a-form>
-            </a-row>
-          </ScrollContainer>
+        <div class="action-bar-left"> </div>
+        <div class="action-bar-right">
+          <a-tooltip :title="t('common.undoText')">
+            <a-button type="text" class="action-bar-btn" :disabled="!getCanUndo" @click="handleUndo(replaceDrawingList)">
+              <i class="icon-ym icon-ym-undo" />
+            </a-button>
+          </a-tooltip>
+          <a-tooltip :title="t('common.redoText')">
+            <a-button type="text" class="action-bar-btn" :disabled="!getCanRedo" @click="handleRedo(replaceDrawingList)">
+              <i class="icon-ym icon-ym-redo" />
+            </a-button>
+          </a-tooltip>
+          <a-divider type="vertical" class="action-bar-divider" />
+          <a-tooltip :title="t('common.cleanText')">
+            <a-button type="text" class="action-bar-btn" @click="handleClear">
+              <ClearOutlined />
+            </a-button>
+          </a-tooltip>
+          <a-tooltip :title="t('common.previewText')">
+            <a-button type="text" class="action-bar-btn" @click="handlePreview">
+              <PlayCircleOutlined />
+            </a-button>
+          </a-tooltip>
         </div>
       </div>
+      <div class="center-board-main">
+        <ScrollContainer>
+          <a-row class="center-board-row" :gutter="formConf.gutter || 15">
+            <a-form
+              :colon="formConf.colon"
+              :size="formConf.size"
+              :layout="formConf.labelPosition === 'top' ? 'vertical' : 'horizontal'"
+              :labelAlign="formConf.labelPosition === 'right' ? 'right' : 'left'">
+              <draggable class="drawing-board" v-model="drawingList" :animation="300" group="componentsGroup" item-key="renderKey" @end="onCenterEnd">
+                <template #item="{ element, index }">
+                  <draggable-item
+                    :key="element.renderKey"
+                    :drawing-list="drawingList"
+                    :element="element"
+                    :index="index"
+                    :form-conf="formConf"
+                    @activeItem="activeFormItem"
+                    @copyItem="drawingItemCopy"
+                    @deleteItem="drawingItemDelete" />
+                </template>
+              </draggable>
+              <div v-show="!drawingList.length" class="empty-info">
+                <a-empty />
+                <!-- <img src="@/assets/images/emptyElement.png" class="empty-img" /> -->
+              </div>
+            </a-form>
+          </a-row>
+        </ScrollContainer>
+      </div>
     </div>
-    <RightPanel v-bind="getRightPanelBind" @relationChange="onRelationChange" @addTableComponent="handleAddTableComponent" @activeFormItem="activeFormItem" />
+    <RightPanel />
   </div>
 </template>
 
-<script setup lang="ts">
-  import { ref, reactive, toRefs } from 'vue';
+<script lang="ts" setup>
+  import { ref, reactive, toRefs, nextTick } from 'vue';
   import draggable from 'vuedraggable';
   import { cloneDeep } from 'lodash-es';
+  import { ClearOutlined, PlayCircleOutlined } from '@ant-design/icons-vue';
   import { buildBitUUID } from '@fer-codeless/utils';
   import { ScrollContainer } from '@/components/Container';
   import DraggableItem from './components/DraggableItem.vue';
   import RightPanel from './components/RightPanel.vue';
   import { useRedo } from '../hooks/useRedo';
+  import { useI18n } from '@/hooks/web/useI18n';
 
   import { inputComponents, selectComponents, systemComponents, layoutComponents, formConf as defaultFormConf } from '../helper/componentMap';
 
@@ -80,10 +107,11 @@
     leftComponents: any[];
     leftTabActiveKey: string;
     formConf: any;
-
     drawingList: any[];
     activeId: any;
   }
+
+  const { t } = useI18n();
 
   const state = reactive<State>({
     leftComponents: [
@@ -130,7 +158,20 @@
     state.activeData = element;
   }
 
-  function drawingItemCopy(item, parent, isActiveFormItem = true) {}
+  function drawingItemCopy(item, parent, isActiveFormItem = true) {
+    let clone = cloneDeep(item);
+    parent.push(clone);
+    isActiveFormItem && activeFormItem(clone);
+    addLocalRecord(state.drawingList);
+  }
+  function drawingItemDelete(index, parent) {
+    parent.splice(index, 1);
+    // nextTick(() => {
+    //   const len = state.drawingList.length;
+    //   if (len) activeFormItem(state.drawingList[len - 1]);
+    //   addLocalRecord(state.drawingList);
+    // });
+  }
 
   // 左侧组件拖拽结束
   function onLeftEnd(obj) {

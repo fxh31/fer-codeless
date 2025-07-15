@@ -124,6 +124,24 @@
         width: 100%;
       }
     }
+    .empty-info {
+      position: absolute;
+      top: 20%;
+      left: calc(50% - 150px);
+      pointer-events: none;
+      &.app-empty-info {
+        top: calc(50% - 150px);
+        left: calc(50% - 150px);
+        .empty-img {
+          width: 300px;
+          height: 300px;
+        }
+      }
+      .empty-img {
+        width: 500px;
+        height: 500px;
+      }
+    }
 
     .drawing-board {
       height: 100%;
@@ -131,11 +149,28 @@
       // display: flex;
       // flex-wrap: wrap;
       // align-content: flex-start;
-      // .components-body {
-      //   padding: 0;
-      //   margin: 0;
-      //   font-size: 0;
-      // }
+      .components-body {
+        padding: 0;
+        margin: 0;
+        font-size: 0;
+      }
+
+      .drawing-item-action {
+        position: absolute;
+        top: -10px;
+        height: 24px;
+        line-height: 22px;
+        border-radius: 24px;
+        font-size: 12px;
+
+        &-container {
+          display: flex;
+        }
+
+        .drawing-item-action-item {
+        }
+      }
+
       // .sortable-ghost {
       //   position: relative;
       //   display: block;

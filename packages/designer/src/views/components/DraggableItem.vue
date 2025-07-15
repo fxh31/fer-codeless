@@ -1,7 +1,9 @@
 <script lang="tsx">
   import { defineComponent, h } from 'vue';
+  import { CopyOutlined, DeleteOutlined } from '@ant-design/icons-vue';
   import draggable from 'vuedraggable';
   import render from '@/helper/render';
+  import { useI18n } from '@/hooks/web/useI18n';
 
   interface AttrsType {
     onActiveItem: (element) => void;
@@ -21,7 +23,65 @@
     },
     props: ['element', 'index', 'drawingList', 'activeId', 'formConf', 'showType'],
     setup(props, { attrs }) {
-      const components = {};
+      const { t } = useI18n();
+
+      const components = {
+        itemBtns(element, index, parent, isTableGrid = false) {
+          const gutter = element.__config__?.layout === 'colFormItem' && props.formConf?.gutter ? props.formConf.gutter : 0;
+          const rightDistance = gutter;
+          const { onCopyItem, onDeleteItem } = attrs as unknown as AttrsType;
+          const tableSetting = (element, isTableGrid) => {
+            const { onAddRow, onAddCol } = attrs as unknown as AttrsType;
+            if (!isTableGrid) return null;
+            return [
+              <span
+                class="drawing-item-action-item drawing-item-add-row"
+                title="插入行"
+                onClick={event => {
+                  onAddRow(element);
+                  event.stopPropagation();
+                }}>
+                <i class="icon-ym icon-ym-generator-insertRow" />
+              </span>,
+              <span
+                class=" drawing-item-action-item drawing-item-add-col"
+                title="插入列"
+                onClick={event => {
+                  onAddCol(element);
+                  event.stopPropagation();
+                }}>
+                <i class="icon-ym icon-ym-generator-insertCol" />
+              </span>,
+            ];
+          };
+          return (
+            <div class="drawing-item-action" style={{ '--rightDistance': rightDistance + 10 + 'px' }}>
+              {tableSetting(element, isTableGrid)}
+              <div class="drawing-item-action-container">
+                <span
+                  class="drawing-item-action-item drawing-item-copy"
+                  title={t('common.copyText')}
+                  onClick={event => {
+                    onCopyItem(element, parent);
+                    event.stopPropagation();
+                  }}>
+                  <a-button shape="circle" icon={h(CopyOutlined)} />
+                </span>
+                <a-popconfirm
+                  title={t('formGenerator.delComponentTip')}
+                  class="drawing-item-action-item drawing-item-delete"
+                  onConfirm={_ => {
+                    onDeleteItem(index, parent);
+                  }}>
+                  <span title={t('common.delText')}>
+                    <a-button shape="circle" icon={h(DeleteOutlined)} />
+                  </span>
+                </a-popconfirm>
+              </div>
+            </div>
+          );
+        },
+      };
 
       const layouts = {
         colFormItem(element, index, parent) {
@@ -67,6 +127,7 @@
               <a-form-item v-slots={slots} required={config.required} labelCol={labelCol}>
                 {Item}
               </a-form-item>
+              {components.itemBtns(element, index, parent)}
             </a-col>
           );
         },
