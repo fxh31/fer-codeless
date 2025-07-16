@@ -87,6 +87,7 @@
         colFormItem(element, index, parent) {
           const { onActiveItem } = attrs as AttrsType;
           const config = element.__config__;
+          const className = props.activeId === config.formId ? 'drawing-item active-from-item' : 'drawing-item';
           let labelCol = {};
           if (props.formConf.labelPosition !== 'top' && config.showLabel) {
             const labelWidth = (config.labelWidth || globalLabelWidth) + 'px';

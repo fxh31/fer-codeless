@@ -454,3 +454,35 @@
     }
   }
 }
+
+.action-bar {
+  position: relative;
+  height: 42px;
+  text-align: center;
+  padding: 0 15px;
+  box-sizing: border-box;
+  border-bottom: 1px solid @border-color-base;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .action-bar-left,
+  .action-bar-right {
+    display: flex;
+    align-items: center;
+  }
+  .action-bar-btn {
+    margin-left: 10px;
+    width: 30px !important;
+    padding: 0 !important;
+    text-align: center;
+  }
+  .action-bar-divider {
+    height: 16px;
+    margin: 0 6px;
+    top: 1px;
+    & + .action-bar-btn {
+      margin-left: 0;
+    }
+  }
+}

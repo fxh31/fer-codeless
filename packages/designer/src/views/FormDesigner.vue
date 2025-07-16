@@ -32,14 +32,14 @@
       <div class="action-bar">
         <div class="action-bar-left"> </div>
         <div class="action-bar-right">
-          <a-tooltip :title="t('common.undoText')">
-            <a-button type="text" class="action-bar-btn" :disabled="!getCanUndo" @click="handleUndo(replaceDrawingList)">
-              <i class="icon-ym icon-ym-undo" />
+          <a-tooltip :title="t('common.prev')">
+            <a-button type="text" class="action-bar-btn" :disabled="!getCanUndo" @click="handlePrev(replaceDrawingList)">
+              <UndoOutlined />
             </a-button>
           </a-tooltip>
-          <a-tooltip :title="t('common.redoText')">
-            <a-button type="text" class="action-bar-btn" :disabled="!getCanRedo" @click="handleRedo(replaceDrawingList)">
-              <i class="icon-ym icon-ym-redo" />
+          <a-tooltip :title="t('common.next')">
+            <a-button type="text" class="action-bar-btn" :disabled="!getCanRedo" @click="handleNext(replaceDrawingList)">
+              <RedoOutlined />
             </a-button>
           </a-tooltip>
           <a-divider type="vertical" class="action-bar-divider" />
@@ -70,6 +70,7 @@
                     :drawing-list="drawingList"
                     :element="element"
                     :index="index"
+                    :active-id="activeId"
                     :form-conf="formConf"
                     @activeItem="activeFormItem"
                     @copyItem="drawingItemCopy"
@@ -93,13 +94,14 @@
   import { ref, reactive, toRefs, nextTick } from 'vue';
   import draggable from 'vuedraggable';
   import { cloneDeep } from 'lodash-es';
-  import { ClearOutlined, PlayCircleOutlined } from '@ant-design/icons-vue';
+  import { ClearOutlined, PlayCircleOutlined, UndoOutlined, RedoOutlined } from '@ant-design/icons-vue';
   import { buildBitUUID } from '@fer-codeless/utils';
   import { ScrollContainer } from '@/components/Container';
   import DraggableItem from './components/DraggableItem.vue';
   import RightPanel from './components/RightPanel.vue';
-  import { useRedo } from '../hooks/useRedo';
+  import { useMessage } from '@/hooks/web/useMessage';
   import { useI18n } from '@/hooks/web/useI18n';
+  import { useRedo } from '../hooks/useRedo';
 
   import { inputComponents, selectComponents, systemComponents, layoutComponents, formConf as defaultFormConf } from '../helper/componentMap';
 
@@ -112,6 +114,7 @@
   }
 
   const { t } = useI18n();
+  const { createMessage, createConfirm } = useMessage();
 
   const state = reactive<State>({
     leftComponents: [
@@ -127,16 +130,17 @@
     activeId: null,
   });
 
-  const { leftComponents, leftTabActiveKey, leftActiveKey, formConf, drawingList } = toRefs(state);
-  const { addRecord } = useRedo();
+  const { leftComponents, leftTabActiveKey, leftActiveKey, formConf, drawingList, activeId } = toRefs(state);
+  const { addRecord, getCanRedo, getCanUndo, handlePrev, handleNext } = useRedo();
 
   /**
    * left component
    */
   // 处理对应组件配置：添加 id 和 renderKey
-  function handleComponentConfig(item) {
+  function createIdAndKey(item) {
     const uuid = buildBitUUID();
     const config = item.__config__;
+    config.formId = 'formItem' + uuid;
     config.renderKey = +new Date();
 
     if (config.layout === 'colFormItem') {
@@ -149,30 +153,15 @@
   function cloneComponent(origin) {
     const clone = cloneDeep(origin);
     const config = clone.__config__;
-    handleComponentConfig(clone);
+    createIdAndKey(clone);
     console.log(clone);
     return clone;
   }
   // 激活当前点击的表单项组件
   function activeFormItem(element) {
     state.activeData = element;
+    state.activeId = element.__config__.formId;
   }
-
-  function drawingItemCopy(item, parent, isActiveFormItem = true) {
-    let clone = cloneDeep(item);
-    parent.push(clone);
-    isActiveFormItem && activeFormItem(clone);
-    addLocalRecord(state.drawingList);
-  }
-  function drawingItemDelete(index, parent) {
-    parent.splice(index, 1);
-    // nextTick(() => {
-    //   const len = state.drawingList.length;
-    //   if (len) activeFormItem(state.drawingList[len - 1]);
-    //   addLocalRecord(state.drawingList);
-    // });
-  }
-
   // 左侧组件拖拽结束
   function onLeftEnd(obj) {
     addLocalRecord(state.drawingList);
@@ -183,10 +172,49 @@
    */
   function onCenterEnd() {}
 
-  /**
-   *
-   */
+  // 清空
+  function handleClear() {
+    createConfirm({
+      iconType: 'warning',
+      title: t('common.tipTitle'),
+      content: t('formGenerator.cleanComponentTip'),
+      onOk: () => {
+        state.drawingList = [];
+        addLocalRecord(state.drawingList);
+      },
+    });
+  }
   function addLocalRecord(val) {
     addRecord(val);
+  }
+  // 复制表单项
+  function drawingItemCopy(item, parent, isActiveFormItem = true) {
+    let clone = cloneDeep(item);
+    clone = createIdAndKey(clone); // 重新生成 key
+    parent.push(clone);
+    isActiveFormItem && activeFormItem(clone);
+    addLocalRecord(state.drawingList);
+  }
+  // 删除表单项
+  function drawingItemDelete(index, parent) {
+    parent.splice(index, 1);
+    // nextTick(() => {
+    //   const len = state.drawingList.length;
+    //   if (len) activeFormItem(state.drawingList[len - 1]);
+    //   addLocalRecord(state.drawingList);
+    // });
+  }
+
+  function replaceDrawingList(data) {
+    state.drawingList = cloneDeep(data);
+    // state.copyDrawingList = JSON.stringify(state.drawingList);
+
+    const loop = list => {
+      for (const e of list) {
+        console.log(e);
+      }
+    };
+
+    loop(state.drawingList);
   }
 </script>
