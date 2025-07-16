@@ -1,0 +1,17 @@
+export const layoutList = [
+  'groupTitle',
+  'divider',
+  'collapse',
+  'tab',
+  'row',
+  'card',
+  'table',
+  'link',
+  'button',
+  'text',
+  'alert',
+  'tableGrid',
+  'tableGridTr',
+  'tableGridTd',
+  'steps',
+];

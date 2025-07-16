@@ -2,6 +2,7 @@
   import { defineComponent, h } from 'vue';
   import { CopyOutlined, DeleteOutlined } from '@ant-design/icons-vue';
   import draggable from 'vuedraggable';
+  import { BasicHelp } from '@/components/Basic/index';
   import render from '@/helper/render';
   import { useI18n } from '@/hooks/web/useI18n';
 
@@ -20,12 +21,14 @@
     components: {
       draggable,
       render,
+      BasicHelp,
     },
     props: ['element', 'index', 'drawingList', 'activeId', 'formConf', 'showType'],
     setup(props, { attrs }) {
       const { t } = useI18n();
 
       const components = {
+        // 表单项按钮
         itemBtns(element, index, parent, isTableGrid = false) {
           const gutter = element.__config__?.layout === 'colFormItem' && props.formConf?.gutter ? props.formConf.gutter : 0;
           const rightDistance = gutter;
@@ -106,6 +109,7 @@
           );
 
           let basicHelp: any = null;
+          if (config.label && config.tipLabel) basicHelp = <BasicHelp text={config.tipLabel} />;
           const labelSuffix = !config.isSubTable && props.formConf.labelSuffix ? props.formConf.labelSuffix : '';
           const slots = {
             label: () => {

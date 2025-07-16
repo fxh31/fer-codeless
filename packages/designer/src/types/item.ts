@@ -4,8 +4,9 @@ export interface ItemCfg {
   formId?: string;
   label: string;
   showLabel: boolean; // 是否显示 label
-  labelWidth: undefined | number;
   layout: string;
+  labelWidth: undefined | number;
+  tipLabel?: string;
 }
 
 export interface BasicGenItem {

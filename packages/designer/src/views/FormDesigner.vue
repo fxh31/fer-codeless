@@ -165,13 +165,11 @@
     const clone = cloneDeep(origin);
     const config = clone.__config__;
     createIdAndKey(clone);
-    console.log(clone);
     return clone;
   }
   // 激活当前点击的表单项组件
   function activeFormItem(element) {
     state.activeData = element;
-    console.log(element);
     state.activeId = element.__config__.formId;
   }
   // 左侧组件拖拽结束

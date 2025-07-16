@@ -55,6 +55,7 @@ export const inputComponents: GenItem[] = [
     __config__: {
       ferKey: 'input',
       label: '单行输入',
+      tipLabel: '',
       labelWidth: undefined,
       showLabel: true,
       layout: 'colFormItem',
@@ -65,6 +66,7 @@ export const inputComponents: GenItem[] = [
     __config__: {
       ferKey: 'textarea',
       label: '多行输入',
+      tipLabel: '',
       labelWidth: undefined,
       showLabel: true,
       layout: 'colFormItem',

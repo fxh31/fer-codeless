@@ -5,11 +5,25 @@
       <a-tab-pane key="style" tab="组件样式"></a-tab-pane>
       <a-tab-pane key="form" tab="表单属性"></a-tab-pane>
     </a-tabs>
+    <div class="field-box" v-if="activeData?.__config__ && activeData.__config__.ferKey">
+      <a-form :colon="false" layout="vertical" v-show="activeKey === 'field'" class="right-board-form">
+        <a-form-item label="控件类型">
+          <a-input v-model:value="getCompName" disabled />
+        </a-form-item>
+        <a-form-item label="控件标题">
+          <a-input v-model:value="activeData.__config__.label" placeholder="请输入" />
+        </a-form-item>
+        <a-form-item label="标题提示">
+          <a-input v-model:value="activeData.__config__.tipLabel" placeholder="请输入" />
+        </a-form-item>
+      </a-form>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { reactive, toRefs } from 'vue';
+  import { reactive, toRefs, computed } from 'vue';
+  // import { layoutList } from '@/helper/rightPanel';
 
   const props = defineProps(['activeData', 'formConf', 'drawingList']);
 
@@ -18,4 +32,7 @@
   });
 
   const { activeKey } = toRefs(state);
+  const getCompName = computed(() => {
+    return '逐渐';
+  });
 </script>

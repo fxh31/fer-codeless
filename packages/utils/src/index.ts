@@ -9,3 +9,7 @@ export const withInstall = (component, alias?: string) => {
   };
   return component;
 };
+
+export function getPopupContainer(node?: HTMLElement): HTMLElement {
+  return (node?.parentNode as HTMLElement) ?? document.body;
+}
