@@ -22,8 +22,8 @@
 </template>
 
 <script lang="ts" setup>
-  import { reactive, toRefs, computed } from 'vue';
-  // import { layoutList } from '@/helper/rightPanel';
+  import { reactive, toRefs, computed, unref } from 'vue';
+  import { inputComponents } from '@/helper/componentMap';
 
   const props = defineProps(['activeData', 'formConf', 'drawingList']);
 
@@ -32,7 +32,11 @@
   });
 
   const { activeKey } = toRefs(state);
+  const ferKey = computed(() => unref(props.activeData).__config__?.ferKey);
   const getCompName = computed(() => {
-    return '逐渐';
+    const allComps = [...inputComponents];
+    const comp = allComps.filter(o => o.__config__.ferKey === unref(ferKey));
+    if (!comp.length) return '';
+    return comp[0].__config__.label;
   });
 </script>

@@ -124,6 +124,7 @@
           };
           return (
             <a-col
+              class={className}
               span={config.span}
               data-draggable={true}
               draggable={false}

@@ -1,7 +1,9 @@
 @border-radius: 4px;
 @border-color-base: #f0f0f0;
 
+@primary-1: #e6f7ff;
 @primary-color: #1890ff;
+
 @text-color: rgba(0, 0, 0, 0.65);
 @error-color: #ed6f6f;
 @component-background: #fff;
@@ -198,131 +200,131 @@
       //   height: 60px;
       //   background-color: @primary-color;
       // }
-      // .drawing-item {
-      //   position: relative;
-      //   cursor: move;
-      //   .ant-form-item {
-      //     border: 1px dashed @border-color-base;
-      //     padding: 10px;
-      //     margin-bottom: 10px !important;
-      //     border-radius: 8px;
-      //     .common-container {
-      //       .ant-form-item {
-      //         border: unset;
-      //         padding: 0;
-      //         margin-bottom: 0 !important;
-      //         border-radius: 0;
-      //       }
-      //     }
-      //   }
-      // }
-      // .drawing-row-item {
-      //   position: relative;
-      //   cursor: move;
-      //   box-sizing: border-box;
-      //   border: 1px dashed @border-color-base;
-      //   padding: 0 2px;
-      //   margin-bottom: 10px;
-      //   border-radius: 8px;
-      //   &.drawing-row-item-table-grid {
-      //     padding-top: 10px;
-      //     padding-bottom: 10px;
-      //   }
-      //   .ant-card {
-      //     width: 100%;
-      //     .ant-card-body {
-      //       & > .ant-row {
-      //         width: 100%;
-      //       }
-      //     }
-      //   }
-      //   .ant-tabs {
-      //     width: 100%;
-      //     .ant-tabs-nav {
-      //       margin-bottom: 0;
-      //     }
-      //   }
-      //   .ant-collapse {
-      //     width: 100%;
-      //   }
-      //   .child-drawing-row {
-      //     position: relative;
-      //   }
-      //   &.drawing-row-item-row {
-      //     position: relative;
-      //     & > .ant-col {
-      //       width: 100%;
-      //     }
-      //     .row-tip {
-      //       top: 50px;
-      //     }
-      //     .drag-wrapper {
-      //       min-height: 100px;
-      //     }
-      //   }
-      //   &.drawing-row-item-table {
-      //     .row-tip {
-      //       top: 50px;
-      //     }
-      //     .ant-form {
-      //       width: 100%;
-      //     }
-      //     .drag-wrapper {
-      //       min-height: 100px;
-      //       padding-top: 30px;
-      //     }
-      //     .table-wrapper-web {
-      //       overflow: auto hidden;
-      //       display: flex;
-      //       width: 100%;
-      //       flex-wrap: nowrap;
-      //       padding-bottom: 10px;
+      .drawing-item {
+        position: relative;
+        cursor: move;
+        .ant-form-item {
+          border: 1px dashed @border-color-base;
+          padding: 10px;
+          margin-bottom: 10px !important;
+          border-radius: 8px;
+          .common-container {
+            .ant-form-item {
+              border: unset;
+              padding: 0;
+              margin-bottom: 0 !important;
+              border-radius: 0;
+            }
+          }
+        }
+      }
+      .drawing-row-item {
+        //   position: relative;
+        //   cursor: move;
+        //   box-sizing: border-box;
+        //   border: 1px dashed @border-color-base;
+        //   padding: 0 2px;
+        //   margin-bottom: 10px;
+        //   border-radius: 8px;
+        //   &.drawing-row-item-table-grid {
+        //     padding-top: 10px;
+        //     padding-bottom: 10px;
+        //   }
+        //   .ant-card {
+        //     width: 100%;
+        //     .ant-card-body {
+        //       & > .ant-row {
+        //         width: 100%;
+        //       }
+        //     }
+        //   }
+        //   .ant-tabs {
+        //     width: 100%;
+        //     .ant-tabs-nav {
+        //       margin-bottom: 0;
+        //     }
+        //   }
+        //   .ant-collapse {
+        //     width: 100%;
+        //   }
+        //   .child-drawing-row {
+        //     position: relative;
+        //   }
+        //   &.drawing-row-item-row {
+        //     position: relative;
+        //     & > .ant-col {
+        //       width: 100%;
+        //     }
+        //     .row-tip {
+        //       top: 50px;
+        //     }
+        //     .drag-wrapper {
+        //       min-height: 100px;
+        //     }
+        //   }
+        //   &.drawing-row-item-table {
+        //     .row-tip {
+        //       top: 50px;
+        //     }
+        //     .ant-form {
+        //       width: 100%;
+        //     }
+        //     .drag-wrapper {
+        //       min-height: 100px;
+        //       padding-top: 30px;
+        //     }
+        //     .table-wrapper-web {
+        //       overflow: auto hidden;
+        //       display: flex;
+        //       width: 100%;
+        //       flex-wrap: nowrap;
+        //       padding-bottom: 10px;
 
-      //       & > .ant-col {
-      //         width: 200px !important;
-      //         flex: none;
-      //         flex-shrink: 0;
-      //         height: auto;
-      //         .ant-row {
-      //           display: block;
-      //         }
-      //         .ant-form-item {
-      //           margin-bottom: 0 !important;
-      //           .ant-form-item-label {
-      //             width: auto !important;
-      //           }
-      //         }
-      //       }
-      //     }
-      //   }
-      //   .drawing-row-item {
-      //     margin-bottom: 2px;
-      //   }
-      //   .drag-wrapper {
-      //     width: 100%;
-      //     min-height: 80px;
-      //     display: flex;
-      //     flex-wrap: wrap;
-      //     align-content: flex-start;
-      //     &.tableGrid-app-wrapper {
-      //       .row-tip {
-      //         margin-top: 20px;
-      //       }
-      //     }
-      //   }
-      //   &.active-from-item {
-      //     border: 1px solid @primary-color;
-      //   }
-      //   .component-name {
-      //     position: absolute;
-      //     top: 0;
-      //     left: 0;
-      //     font-size: 18px;
-      //     color: @text-color-secondary;
-      //     display: inline-block;
-      //     padding: 0 6px;
-      //   }
-      // }
+        //       & > .ant-col {
+        //         width: 200px !important;
+        //         flex: none;
+        //         flex-shrink: 0;
+        //         height: auto;
+        //         .ant-row {
+        //           display: block;
+        //         }
+        //         .ant-form-item {
+        //           margin-bottom: 0 !important;
+        //           .ant-form-item-label {
+        //             width: auto !important;
+        //           }
+        //         }
+        //       }
+        //     }
+        //   }
+        //   .drawing-row-item {
+        //     margin-bottom: 2px;
+        //   }
+        //   .drag-wrapper {
+        //     width: 100%;
+        //     min-height: 80px;
+        //     display: flex;
+        //     flex-wrap: wrap;
+        //     align-content: flex-start;
+        //     &.tableGrid-app-wrapper {
+        //       .row-tip {
+        //         margin-top: 20px;
+        //       }
+        //     }
+        //   }
+        &.active-from-item {
+          border: 1px solid @primary-color;
+        }
+        //   .component-name {
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     font-size: 18px;
+        //     color: @text-color-secondary;
+        //     display: inline-block;
+        //     padding: 0 6px;
+        //   }
+      }
       // .drawing-item,
       // .drawing-row-item {
       //   &:hover {
@@ -413,22 +415,22 @@
       //     }
       //   }
       // }
-      // .active-from-item {
-      //   & > .ant-form-item {
-      //     background-color: @primary-color;
-      //     border: 1px solid @primary-color;
-      //   }
+      .active-from-item {
+        & > .ant-form-item {
+          background-color: @primary-1;
+          border: 1px solid @primary-color;
+        }
 
-      //   & > .drawing-item-action {
-      //     display: flex;
-      //   }
-      //   & > .drawing-item-cell {
-      //     display: block;
-      //   }
-      //   & > .component-name {
-      //     color: @primary-color;
-      //   }
-      // }
+        & > .drawing-item-action {
+          display: flex;
+        }
+        & > .drawing-item-cell {
+          display: block;
+        }
+        & > .component-name {
+          color: @primary-color;
+        }
+      }
       // .row-tip {
       //   width: 100%;
       //   color: @text-color-secondary;
