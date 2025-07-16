@@ -1,3 +1,5 @@
+import type { GenItem } from '../types/item';
+
 // 表单属性【右面板】
 export const formConf = {
   formRef: 'formRef',
@@ -48,11 +50,13 @@ export const formConf = {
 };
 
 // 左面板 - 基础组件
-export const inputComponents = [
+export const inputComponents: GenItem[] = [
   {
     __config__: {
       ferKey: 'input',
       label: '单行输入',
+      labelWidth: undefined,
+      showLabel: true,
       layout: 'colFormItem',
       dragDisabled: false,
     },
@@ -61,6 +65,8 @@ export const inputComponents = [
     __config__: {
       ferKey: 'textarea',
       label: '多行输入',
+      labelWidth: undefined,
+      showLabel: true,
       layout: 'colFormItem',
       dragDisabled: false,
     },

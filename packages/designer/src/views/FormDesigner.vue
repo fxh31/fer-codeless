@@ -86,12 +86,12 @@
         </ScrollContainer>
       </div>
     </div>
-    <RightPanel />
+    <RightPanel v-bind="getRightPanelBind" />
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { ref, reactive, toRefs, nextTick } from 'vue';
+  import { ref, reactive, toRefs, nextTick, computed } from 'vue';
   import draggable from 'vuedraggable';
   import { cloneDeep } from 'lodash-es';
   import { ClearOutlined, PlayCircleOutlined, UndoOutlined, RedoOutlined } from '@ant-design/icons-vue';
@@ -107,10 +107,12 @@
 
   interface State {
     leftComponents: any[];
+    leftActiveKey: string[];
     leftTabActiveKey: string;
     formConf: any;
     drawingList: any[];
     activeId: any;
+    activeData: any;
   }
 
   const { t } = useI18n();
@@ -128,10 +130,19 @@
     formConf: cloneDeep(defaultFormConf),
     drawingList: [],
     activeId: null,
+    activeData: {},
   });
 
   const { leftComponents, leftTabActiveKey, leftActiveKey, formConf, drawingList, activeId } = toRefs(state);
   const { addRecord, getCanRedo, getCanUndo, handlePrev, handleNext } = useRedo();
+
+  const getRightPanelBind = computed(() => {
+    return {
+      activeData: state.activeData,
+      formConf: state.formConf,
+      drawingList: state.drawingList,
+    };
+  });
 
   /**
    * left component
@@ -160,6 +171,7 @@
   // 激活当前点击的表单项组件
   function activeFormItem(element) {
     state.activeData = element;
+    console.log(element);
     state.activeId = element.__config__.formId;
   }
   // 左侧组件拖拽结束

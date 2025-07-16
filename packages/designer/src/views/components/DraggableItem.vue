@@ -88,6 +88,7 @@
           const { onActiveItem } = attrs as AttrsType;
           const config = element.__config__;
           const className = props.activeId === config.formId ? 'drawing-item active-from-item' : 'drawing-item';
+          const globalLabelWidth = props.formConf.labelWidth;
           let labelCol = {};
           if (props.formConf.labelPosition !== 'top' && config.showLabel) {
             const labelWidth = (config.labelWidth || globalLabelWidth) + 'px';
@@ -104,6 +105,7 @@
             />
           );
 
+          let basicHelp: any = null;
           const labelSuffix = !config.isSubTable && props.formConf.labelSuffix ? props.formConf.labelSuffix : '';
           const slots = {
             label: () => {

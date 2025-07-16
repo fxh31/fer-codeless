@@ -11,6 +11,8 @@
 <script lang="ts" setup>
   import { reactive, toRefs } from 'vue';
 
+  const props = defineProps(['activeData', 'formConf', 'drawingList']);
+
   const state = reactive({
     activeKey: 'field',
   });
