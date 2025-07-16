@@ -1,12 +1,19 @@
 import './index.less';
 
 import { createApp } from 'vue';
+import { setupI18n } from './locales/setupI18n';
 import antDeSign from 'ant-design-vue';
 
 import App from './App.vue';
 
-const app = createApp(App);
+async function bootstrap() {
+  const app = createApp(App);
 
-app.use(antDeSign);
+  await setupI18n(app);
 
-app.mount('#app');
+  app.use(antDeSign);
+
+  app.mount('#app');
+}
+
+bootstrap();
