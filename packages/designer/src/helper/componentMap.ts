@@ -60,6 +60,7 @@ export const inputComponents: GenItem[] = [
       showLabel: true,
       layout: 'colFormItem',
       dragDisabled: false,
+      span: 24,
     },
   },
   {
@@ -71,6 +72,7 @@ export const inputComponents: GenItem[] = [
       showLabel: true,
       layout: 'colFormItem',
       dragDisabled: false,
+      span: 24,
     },
   },
 ];

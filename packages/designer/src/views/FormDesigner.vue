@@ -98,7 +98,7 @@
   import { buildBitUUID } from '@fer-codeless/utils';
   import { ScrollContainer } from '@/components/Container';
   import DraggableItem from './components/DraggableItem.vue';
-  import RightPanel from './components/RightPanel.vue';
+  import RightPanel from './components/RightPanel/index.vue';
   import { useMessage } from '@/hooks/web/useMessage';
   import { useI18n } from '@/hooks/web/useI18n';
   import { useRedo } from '../hooks/useRedo';
@@ -181,7 +181,8 @@
    * center component
    */
   function onCenterEnd() {}
-
+  // 预览表单
+  function handlePreview() {}
   // 清空
   function handleClear() {
     createConfirm({
