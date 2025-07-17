@@ -45,22 +45,6 @@ export default defineComponent({
           dataObject[key] = val;
         }
       });
-      // if (['calculate', 'table', 'barcode', 'qrcode', 'popupSelect', 'popupTableSelect', 'autoComplete'].includes(jnpfKey)) {
-      //   dataObject['formData'] = formData;
-      // }
-      // if (['table'].includes(jnpfKey)) {
-      //   dataObject['relations'] = props.relations;
-      //   dataObject['vModel'] = confClone.__vModel__;
-      //   dataObject['ref'] = 'tableRef';
-      // }
-      // if (['relationForm', 'popupSelect'].includes(jnpfKey)) {
-      //   dataObject['field'] = confClone.__config__.tableName
-      //     ? confClone.__vModel__ + '_jnpfTable_' + confClone.__config__.tableName + (confClone.__config__.isSubTable ? '0' : '1')
-      //     : confClone.__vModel__;
-      //   if (confClone.__config__.isSubTable) delete dataObject.extraOptions;
-      // }
-      // // 清理属性
-      // clearAttrs(dataObject);
     }
 
     return () => {

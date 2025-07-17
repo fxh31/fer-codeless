@@ -22,6 +22,7 @@
           </a-form-item>
         </a-form>
         <StylePane v-bind="getBindValue" v-show="activeKey === 'style'" />
+        <FormAttrPane v-bind="getBindValue" v-show="activeKey === 'form'" />
       </ScrollContainer>
     </div>
   </div>
@@ -32,6 +33,7 @@
   import { inputComponents } from '@/helper/componentMap';
   import { ScrollContainer } from '@/components/Container';
   import StylePane from './components/StylePane.vue';
+  import FormAttrPane from './components/FormAttrPane.vue';
 
   const props = defineProps(['activeData', 'formConf', 'drawingList']);
 
