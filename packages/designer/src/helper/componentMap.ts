@@ -61,7 +61,9 @@ export const inputComponents: GenItem[] = [
       layout: 'colFormItem',
       dragDisabled: false,
       span: 24,
+      defaultValue: undefined,
     },
+    style: { width: '100%' },
   },
   {
     __config__: {
@@ -73,7 +75,9 @@ export const inputComponents: GenItem[] = [
       layout: 'colFormItem',
       dragDisabled: false,
       span: 24,
+      defaultValue: undefined,
     },
+    style: { width: '100%' },
   },
 ];
 

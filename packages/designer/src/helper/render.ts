@@ -24,13 +24,57 @@ export default defineComponent({
   setup(props, { emit }) {
     onMounted(() => {});
 
+    // 默认值绑定
+    function buildVModel(dataObject, defaultValue) {
+      dataObject.value = defaultValue;
+      // let obj = dataObject.on ?? {};
+      // obj['update:value'] = val => {
+      //   emit('update:value', val);
+      // };
+      // dataObject.on = obj;
+    }
+
+    function buildDataObject(confClone, dataObject, formData) {
+      const ferKey = confClone.__config__.ferKey;
+      Object.keys(confClone).forEach(key => {
+        const val = confClone[key];
+        if (key === '__vModel__') {
+          buildVModel(dataObject, confClone.__config__.defaultValue);
+        } else if (dataObject[key] !== undefined) {
+        } else {
+          dataObject[key] = val;
+        }
+      });
+      // if (['calculate', 'table', 'barcode', 'qrcode', 'popupSelect', 'popupTableSelect', 'autoComplete'].includes(jnpfKey)) {
+      //   dataObject['formData'] = formData;
+      // }
+      // if (['table'].includes(jnpfKey)) {
+      //   dataObject['relations'] = props.relations;
+      //   dataObject['vModel'] = confClone.__vModel__;
+      //   dataObject['ref'] = 'tableRef';
+      // }
+      // if (['relationForm', 'popupSelect'].includes(jnpfKey)) {
+      //   dataObject['field'] = confClone.__config__.tableName
+      //     ? confClone.__vModel__ + '_jnpfTable_' + confClone.__config__.tableName + (confClone.__config__.isSubTable ? '0' : '1')
+      //     : confClone.__vModel__;
+      //   if (confClone.__config__.isSubTable) delete dataObject.extraOptions;
+      // }
+      // // 清理属性
+      // clearAttrs(dataObject);
+    }
+
     return () => {
       const dataObject = {};
+      const confClone = cloneDeep(props.conf);
+
+      // 转换 dataObject 对象：将json表单配置转化为vue render可以识别的数据对象(dataObject)
+      buildDataObject(confClone, dataObject, props.formData);
 
       const ferKey = upperFirst(props.conf.__config__.ferKey);
       const Comp = componentMap.get(ferKey as ComponentType) as ReturnType<typeof defineComponent>;
       if (!Comp) return null;
-      const realDataObject = {};
+
+      const realDataObject = getRealProps(dataObject, props.conf.__config__.ferKey);
       return h(Comp, realDataObject as any);
     };
   },

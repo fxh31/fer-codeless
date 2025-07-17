@@ -102,8 +102,8 @@
               key={config.renderKey}
               conf={element}
               size={element.size ? element.size : props.formConf.size}
-              onUpdate:value={event => {
-                config.defaultValue = event;
+              onUpdate:value={v => {
+                config.defaultValue = v;
               }}
             />
           );
@@ -122,6 +122,7 @@
               );
             },
           };
+
           return (
             <a-col
               class={className}
@@ -140,6 +141,7 @@
           );
         },
       };
+
       return () => {
         const layout = layouts[props.element.__config__.layout];
         if (layout) {

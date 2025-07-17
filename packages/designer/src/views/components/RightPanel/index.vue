@@ -17,6 +17,9 @@
           <a-form-item label="标题提示">
             <a-input v-model:value="activeData.__config__.tipLabel" placeholder="请输入" />
           </a-form-item>
+          <a-form-item label="默认值">
+            <a-input v-model:value="activeData.__config__.defaultValue" placeholder="请输入" />
+          </a-form-item>
         </a-form>
         <StylePane v-bind="getBindValue" v-show="activeKey === 'style'" />
       </ScrollContainer>
