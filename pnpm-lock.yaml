@@ -55,7 +55,14 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0(vue@3.5.17(typescript@5.8.3))
 
-  packages/utils: {}
+  packages/utils:
+    dependencies:
+      lodash-es:
+        specifier: ^4.17.21
+        version: 4.17.21
+      vue:
+        specifier: ^3.5.17
+        version: 3.5.17(typescript@5.8.3)
 
 packages:
 

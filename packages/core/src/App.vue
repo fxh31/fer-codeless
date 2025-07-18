@@ -4,7 +4,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import FormDesigner from './views/FormDesigner.vue';
+  import FormDesigner from './views/FormDesigner/index.vue';
 </script>
 <style lang="less">
   .de-container {

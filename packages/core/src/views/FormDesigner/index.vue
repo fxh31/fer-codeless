@@ -101,9 +101,9 @@
   import RightPanel from './components/RightPanel/index.vue';
   import { useMessage } from '@/hooks/web/useMessage';
   import { useI18n } from '@/hooks/web/useI18n';
-  import { useRedo } from '../hooks/useRedo';
+  import { useRedo } from '../../hooks/useRedo';
 
-  import { inputComponents, selectComponents, systemComponents, layoutComponents, formConf as defaultFormConf } from '../helper/componentMap';
+  import { inputComponents, selectComponents, systemComponents, layoutComponents, formConf as defaultFormConf } from '../../helper/componentMap';
 
   interface State {
     leftComponents: any[];
