@@ -2,7 +2,7 @@
   <div class="fer-basic-generator">
     <div class="left-board common-board">
       <a-tabs v-model:activeKey="leftTabActiveKey" :tabBarGutter="10" class="average-tabs">
-        <a-tab-pane key="1" tab="控件" />
+        <a-tab-pane key="1" tab="组件" />
       </a-tabs>
 
       <a-collapse v-model:activeKey="leftActiveKey" expandIconPosition="end" ghost v-show="leftTabActiveKey === '1'">
@@ -117,13 +117,14 @@
 
   const { t } = useI18n();
   const { createMessage, createConfirm } = useMessage();
+  let tempActiveData;
 
   const state = reactive<State>({
     leftComponents: [
-      { id: '1', title: '基础控件', list: inputComponents },
-      { id: '2', title: '高级控件', list: selectComponents },
-      { id: '3', title: '系统控件', list: systemComponents },
-      { id: '4', title: '布局控件', list: layoutComponents },
+      { id: '1', title: '基础组件', list: inputComponents },
+      { id: '2', title: '高级组件', list: selectComponents },
+      { id: '3', title: '系统组件', list: systemComponents },
+      { id: '4', title: '布局组件', list: layoutComponents },
     ],
     leftActiveKey: ['1', '2', '3', '4'],
     leftTabActiveKey: '1',
@@ -160,12 +161,20 @@
 
     return item;
   }
+  // 点击组件时添加至表单，并激活
+  function addComponent(item) {
+    const clone = cloneComponent(item);
+    (state.drawingList as any[]).push(clone);
+    activeFormItem(clone);
+    addLocalRecord(state.drawingList);
+  }
   // 拖拽时赋复制对应组件配置
   function cloneComponent(origin) {
     const clone = cloneDeep(origin);
     const config = clone.__config__;
     createIdAndKey(clone);
-    return clone;
+    tempActiveData = clone;
+    return tempActiveData;
   }
   // 激活当前点击的表单项组件
   function activeFormItem(element) {
@@ -174,15 +183,32 @@
   }
   // 左侧组件拖拽结束
   function onLeftEnd(obj) {
+    if (obj.from !== obj.to) {
+      state.activeData = tempActiveData;
+      state.activeId = tempActiveData.__config__.formId;
+    }
     addLocalRecord(state.drawingList);
   }
 
   /**
    * center component
    */
-  function onCenterEnd() {}
+  // 中间表单拖拽完成事件
+  function onCenterEnd() {
+    console.log('中间拖拽结束');
+  }
+  // 组装表单属性和表单项
+  function assembleFormData() {
+    state.formConf = {
+      ...state.formConf,
+      fields: cloneDeep(state.drawingList),
+    };
+  }
   // 预览表单
-  function handlePreview() {}
+  function handlePreview() {
+    assembleFormData();
+    console.log(state.formConf);
+  }
   // 清空
   function handleClear() {
     createConfirm({

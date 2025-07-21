@@ -8,7 +8,7 @@ export interface ItemCfg {
   labelWidth: undefined | number;
   tipLabel?: string; // 标题提示
   defaultValue?: any; // 默认值
-  className: string[]; // 控件绑定 class
+  className: string[]; // 组件绑定 class
 }
 
 export interface BasicGenItem {

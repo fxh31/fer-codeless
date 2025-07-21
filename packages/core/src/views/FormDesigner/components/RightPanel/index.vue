@@ -8,10 +8,10 @@
     <div class="field-box" v-if="activeData?.__config__ && activeData.__config__.ferKey">
       <ScrollContainer>
         <a-form :colon="false" layout="vertical" v-show="activeKey === 'field'" class="right-board-form">
-          <a-form-item label="控件类型">
+          <a-form-item label="组件类型">
             <a-input v-model:value="getCompName" disabled />
           </a-form-item>
-          <a-form-item label="控件标题">
+          <a-form-item label="组件标题">
             <a-input v-model:value="activeData.__config__.label" placeholder="请输入" />
           </a-form-item>
           <a-form-item label="标题提示">
