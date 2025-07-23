@@ -64,6 +64,9 @@ export const inputComponents: GenItem[] = [
       defaultValue: undefined,
     },
     style: { width: '100%' },
+    on: {
+      change: '({ data }) => {\n    // 在此编写代码\n    \n}',
+    },
   },
   {
     __config__: {

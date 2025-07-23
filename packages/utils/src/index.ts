@@ -1,5 +1,5 @@
 import { cloneDeep, isEqual, mergeWith, unionWith } from 'lodash-es';
-
+import { isObject } from './is';
 export const withInstall = (component, alias?: string) => {
   (component as Record<string, unknown>).install = app => {
     const compName = component.name || component.displayName;

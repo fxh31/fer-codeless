@@ -14,7 +14,6 @@
 
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { BasicHelp } from '@/components/Basic';
 
   const sizeOptions = [
     { id: 'large', fullName: '较大' },

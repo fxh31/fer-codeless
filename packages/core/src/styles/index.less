@@ -11,6 +11,11 @@
 @text-color-label: #606266;
 @app-content-background: #606266;
 @text-color-base: #c9d1d9;
+@text-color-help-dark: #909399;
+
+@warning-color: #efbd47;
+@success-color: #55d187;
+@error-color: #ed6f6f;
 
 @prefix-cls: ~'@{namespace}-basic-generator';
 
@@ -326,96 +331,96 @@
         //     padding: 0 6px;
         //   }
       }
-      // .drawing-item,
-      // .drawing-row-item {
-      //   &:hover {
-      //     & > .ant-form-item {
-      //       background: @primary-color;
-      //     }
+      .drawing-item,
+      .drawing-row-item {
+        &:hover {
+          & > .ant-form-item {
+            background: @primary-1;
+          }
 
-      //     & > .drawing-item-action {
-      //       display: flex;
-      //     }
-      //     & > .drawing-item-cell {
-      //       display: block;
-      //     }
-      //   }
-      //   & > .drawing-item-action {
-      //     position: absolute;
-      //     top: -10px;
-      //     height: 24px;
-      //     line-height: 22px;
-      //     border-radius: 24px;
-      //     font-size: 12px;
-      //     border: 1px solid @primary-color;
-      //     background: @component-background;
-      //     cursor: pointer;
-      //     z-index: 1;
-      //     right: var(--rightDistance);
-      //     display: none;
-      //     overflow: hidden;
-      //     .drawing-item-action-item {
-      //       display: block;
-      //       width: 30px;
-      //       height: 22px;
-      //       height: 100%;
-      //       text-align: center;
-      //       position: relative;
-      //       align-items: center;
-      //       justify-content: flex-start;
-      //       color: @text-color-label;
-      //       &.drawing-item-delete {
-      //         color: @text-color-label;
-      //         &:hover {
-      //           background: #ffe5e5;
-      //           color: @error-color;
-      //         }
-      //       }
-      //       &:hover {
-      //         background: @primary-color;
-      //         color: @primary-color;
-      //       }
-      //       &:first-child {
-      //         &::after {
-      //           display: none;
-      //         }
-      //       }
-      //       &::after {
-      //         display: block;
-      //         content: '';
-      //         position: absolute;
-      //         top: 3px;
-      //         left: 0;
-      //         height: 16px;
-      //         width: 1px;
-      //         background-color: @border-color-base;
-      //       }
-      //     }
-      //   }
+          & > .drawing-item-action {
+            display: flex;
+          }
+          & > .drawing-item-cell {
+            display: block;
+          }
+        }
+        //   & > .drawing-item-action {
+        //     position: absolute;
+        //     top: -10px;
+        //     height: 24px;
+        //     line-height: 22px;
+        //     border-radius: 24px;
+        //     font-size: 12px;
+        //     border: 1px solid @primary-color;
+        //     background: @component-background;
+        //     cursor: pointer;
+        //     z-index: 1;
+        //     right: var(--rightDistance);
+        //     display: none;
+        //     overflow: hidden;
+        //     .drawing-item-action-item {
+        //       display: block;
+        //       width: 30px;
+        //       height: 22px;
+        //       height: 100%;
+        //       text-align: center;
+        //       position: relative;
+        //       align-items: center;
+        //       justify-content: flex-start;
+        //       color: @text-color-label;
+        //       &.drawing-item-delete {
+        //         color: @text-color-label;
+        //         &:hover {
+        //           background: #ffe5e5;
+        //           color: @error-color;
+        //         }
+        //       }
+        //       &:hover {
+        //         background: @primary-color;
+        //         color: @primary-color;
+        //       }
+        //       &:first-child {
+        //         &::after {
+        //           display: none;
+        //         }
+        //       }
+        //       &::after {
+        //         display: block;
+        //         content: '';
+        //         position: absolute;
+        //         top: 3px;
+        //         left: 0;
+        //         height: 16px;
+        //         width: 1px;
+        //         background-color: @border-color-base;
+        //       }
+        //     }
+        //   }
 
-      //   & > .drawing-item-cell {
-      //     display: none;
-      //     position: absolute;
-      //     bottom: 0;
-      //     right: 0;
-      //     width: 22px;
-      //     height: 22px;
-      //     line-height: 22px;
-      //     text-align: center;
-      //     font-size: 12px;
-      //     cursor: pointer;
-      //     z-index: 1;
-      //     color: @component-background;
-      //     background-color: @primary-color;
-      //     i {
-      //       color: #fff;
-      //     }
-      //     .anticon {
-      //       vertical-align: top !important;
-      //       margin-top: 5px;
-      //     }
-      //   }
-      // }
+        //   & > .drawing-item-cell {
+        //     display: none;
+        //     position: absolute;
+        //     bottom: 0;
+        //     right: 0;
+        //     width: 22px;
+        //     height: 22px;
+        //     line-height: 22px;
+        //     text-align: center;
+        //     font-size: 12px;
+        //     cursor: pointer;
+        //     z-index: 1;
+        //     color: @component-background;
+        //     background-color: @primary-color;
+        //     i {
+        //       color: #fff;
+        //     }
+        //     .anticon {
+        //       vertical-align: top !important;
+        //       margin-top: 5px;
+        //     }
+        //   }
+      }
       .active-from-item {
         & > .ant-form-item {
           background-color: @primary-1;

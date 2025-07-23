@@ -1,5 +1,5 @@
 <template>
-  <div class="fer-basic-generator">
+  <div :class="`${prefixCls}`">
     <div class="left-board common-board">
       <a-tabs v-model:activeKey="leftTabActiveKey" :tabBarGutter="10" class="average-tabs">
         <a-tab-pane key="1" tab="组件" />
@@ -102,6 +102,7 @@
   import { useMessage } from '@/hooks/web/useMessage';
   import { useI18n } from '@/hooks/web/useI18n';
   import { useRedo } from '../../hooks/useRedo';
+  import { useDesign } from '@/hooks/web/useDesign';
 
   import { inputComponents, selectComponents, systemComponents, layoutComponents, formConf as defaultFormConf } from '../../helper/componentMap';
 
@@ -115,6 +116,9 @@
     activeData: any;
   }
 
+  const props = defineProps(['formInfo']);
+  const { prefixCls } = useDesign('basic-generator');
+  console.log(prefixCls);
   const { t } = useI18n();
   const { createMessage, createConfirm } = useMessage();
   let tempActiveData;
@@ -142,6 +146,7 @@
       activeData: state.activeData,
       formConf: state.formConf,
       drawingList: state.drawingList,
+      formInfo: props.formInfo,
     };
   });
 

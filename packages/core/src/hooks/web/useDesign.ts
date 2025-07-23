@@ -1,5 +1,7 @@
 export function useDesign(scope: string) {
-  const values = 'fer';
+  const values = {
+    prefixCls: 'fer',
+  };
 
   return {
     prefixCls: `${values.prefixCls}-${scope}`,

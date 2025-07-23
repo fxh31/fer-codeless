@@ -20,11 +20,18 @@
           <a-form-item label="默认值">
             <a-input v-model:value="activeData.__config__.defaultValue" placeholder="请输入" />
           </a-form-item>
+          <div v-if="activeData.on">
+            <a-divider>脚本事件</a-divider>
+            <a-form-item :label="key" v-for="(_value, key) in activeData.on" :key="key">
+              <a-button block @click="editFunc(key)">{{ getFuncText(key) }}</a-button>
+            </a-form-item>
+          </div>
         </a-form>
         <StylePane v-bind="getBindValue" v-show="activeKey === 'style'" />
         <FormAttrPane v-bind="getBindValue" v-show="activeKey === 'form'" />
       </ScrollContainer>
     </div>
+    <FormScript @register="registerScriptModal" :treeTitle="formInfo.fullName" :drawingList="drawingList" />
   </div>
 </template>
 
@@ -34,11 +41,14 @@
   import { ScrollContainer } from '@/components/Container';
   import StylePane from './components/StylePane.vue';
   import FormAttrPane from './components/FormAttrPane.vue';
+  import FormScript from './components/FormScript.vue';
+  import { useModal } from '@/components/Modal';
 
-  const props = defineProps(['activeData', 'formConf', 'drawingList']);
-
+  const props = defineProps(['activeData', 'formConf', 'drawingList', 'formInfo']);
+  const [registerScriptModal, { openModal: openScriptModal }] = useModal();
   const state = reactive({
     activeKey: 'field',
+    activeFunc: '',
   });
 
   const { activeKey } = toRefs(state);
@@ -50,4 +60,24 @@
     if (!comp.length) return '';
     return comp[0].__config__.label;
   });
+
+  /**
+   * 脚本事件
+   */
+  function getFuncText(key) {
+    let text = '';
+    switch (key) {
+      case 'change':
+        text = '发生变化时触发';
+        break;
+        text = '';
+        break;
+    }
+    return text;
+  }
+  // 编辑脚本
+  function editFunc(funcName) {
+    state.activeFunc = funcName;
+    openScriptModal(true, { text: props.activeData.on[state.activeFunc] });
+  }
 </script>
