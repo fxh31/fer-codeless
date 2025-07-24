@@ -118,7 +118,6 @@
 
   const props = defineProps(['formInfo']);
   const { prefixCls } = useDesign('basic-generator');
-  console.log(prefixCls);
   const { t } = useI18n();
   const { createMessage, createConfirm } = useMessage();
   let tempActiveData;

@@ -62,7 +62,7 @@
     },
   });
 </script>
-<style lang="less">
+<style lang="less" scoped>
   @import '@/index.less';
   @prefix-cls: ~'@{namespace}-basic-modal-close';
   .@{prefix-cls} {

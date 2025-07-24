@@ -14,6 +14,9 @@
           <a-form-item label="组件标题">
             <a-input v-model:value="activeData.__config__.label" placeholder="请输入" />
           </a-form-item>
+          <a-form-item label="组件字段">
+            <a-input v-model:value="activeData.__vModel__" placeholder="请输入" />
+          </a-form-item>
           <a-form-item label="标题提示">
             <a-input v-model:value="activeData.__config__.tipLabel" placeholder="请输入" />
           </a-form-item>
@@ -31,7 +34,7 @@
         <FormAttrPane v-bind="getBindValue" v-show="activeKey === 'form'" />
       </ScrollContainer>
     </div>
-    <FormScript @register="registerScriptModal" :treeTitle="formInfo.fullName" :drawingList="drawingList" />
+    <FormScript @register="registerScriptModal" :treeTitle="formInfo.fullName" :drawingList="drawingList" @confirm="updateScript" />
   </div>
 </template>
 
@@ -75,9 +78,13 @@
     }
     return text;
   }
-  // 编辑脚本
+  // 编辑脚本弹窗
   function editFunc(funcName) {
     state.activeFunc = funcName;
     openScriptModal(true, { text: props.activeData.on[state.activeFunc] });
+  }
+  // 修改脚本
+  function updateScript(data) {
+    props.activeData.on[state.activeFunc] = data;
   }
 </script>
