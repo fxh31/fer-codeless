@@ -1,21 +1,12 @@
 <template>
-  <div class="de-container">
-    <FormDesigner v-bind="getFormDesignerBind" />
+  <div>
+    <DesignCom />
   </div>
 </template>
 <script lang="ts" setup>
-  import FormDesigner from './views/FormDesigner/index.vue';
+  import { defineAsyncComponent } from 'vue';
 
-  const getFormDesignerBind = {
-    // 设计表单信息
-    formInfo: {
-      fullName: '表单设计器',
-    },
-  };
+  // 使用异步组件加载，确保 setup 函数都已经加载执行完毕，导出的变量已经赋值
+  const DesignCom = defineAsyncComponent(() => import('./views/index.vue'));
 </script>
-<style lang="less">
-  .de-container {
-    display: flex;
-    height: 100%;
-  }
-</style>
+<style lang="less"></style>
