@@ -81,6 +81,7 @@
       // 表单样式
       const getFormClass = computed((): string => {
         let className: string[] = ['dynamic-form', unref(getFormName)];
+        if (props.formConf.formStyle) className.push(props.formConf.formStyle);
         if (props.formConf.className) className = [...className, ...props.formConf.className];
         return className;
       });
@@ -116,8 +117,8 @@
       }
       // 渲染表单
       function renderForm() {
-        let labelCol = { style: { width: state.formConfCopy.labelWidth + 'px' } };
-        console.log(props.formConf);
+        const labelCol = { style: { width: state.formConfCopy.labelWidth + 'px' } };
+        console.log(getFormClass.value);
         return (
           <a-row class={unref(getFormClass)}>
             <a-form

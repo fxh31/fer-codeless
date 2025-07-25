@@ -11,13 +11,15 @@ export const formConf = {
   // formRules: 'rules',
   // popupType: 'general',
   // generalWidth: '600px',
-  // fullScreenWidth: '100%',
+  fullScreenWidth: '100%',
   // drawerWidth: '600px',
   gutter: 15,
   formStyle: '', // 表单样式
   // disabled: false,
   // span: 24,
   colon: false,
+  classNames: [],
+  className: [],
   // hasCancelBtn: true,
   // cancelButtonText: '取消',
   // cancelButtonTextI18nCode: 'common.cancelText',
@@ -37,9 +39,6 @@ export const formConf = {
   // businessKeyList: [],
   // businessKeyTip: '数据已存在，请勿重复提交！',
   // printId: '',
-
-  // classNames: [],
-  // className: [],
   // classJson: '',
   // funcs: {
   //   onLoad: '({ formData, setFormData, setShowOrHide, setRequired, setDisabled, onlineUtils }) => {\n    // 在此编写代码\n    \n}',
