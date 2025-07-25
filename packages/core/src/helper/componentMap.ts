@@ -14,6 +14,7 @@ export const formConf = {
   // fullScreenWidth: '100%',
   // drawerWidth: '600px',
   gutter: 15,
+  formStyle: '', // 表单样式
   // disabled: false,
   // span: 24,
   colon: false,
@@ -36,7 +37,7 @@ export const formConf = {
   // businessKeyList: [],
   // businessKeyTip: '数据已存在，请勿重复提交！',
   // printId: '',
-  // formStyle: '',
+
   // classNames: [],
   // className: [],
   // classJson: '',

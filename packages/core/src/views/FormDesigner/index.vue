@@ -53,6 +53,11 @@
               <PlayCircleOutlined />
             </a-button>
           </a-tooltip>
+          <a-tooltip title="获取表单对象（console todo...）">
+            <a-button type="text" class="action-bar-btn" @click="handleFormInfo">
+              <ContainerOutlined />
+            </a-button>
+          </a-tooltip>
         </div>
       </div>
       <div class="center-board-main">
@@ -87,17 +92,20 @@
       </div>
     </div>
     <RightPanel v-bind="getRightPanelBind" />
+    <PreviewModal @register="registerPreviewModal" :formConf="formConf" />
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { ref, reactive, toRefs, nextTick, computed } from 'vue';
+  import { ref, reactive, toRefs, nextTick, computed, unref } from 'vue';
   import draggable from 'vuedraggable';
   import { cloneDeep } from 'lodash-es';
-  import { ClearOutlined, PlayCircleOutlined, UndoOutlined, RedoOutlined } from '@ant-design/icons-vue';
+  import { ClearOutlined, PlayCircleOutlined, UndoOutlined, RedoOutlined, ContainerOutlined } from '@ant-design/icons-vue';
   import { buildBitUUID } from '@fer-codeless/utils';
   import { ScrollContainer } from '@/components/Container';
   import DraggableItem from './components/DraggableItem.vue';
+  import PreviewModal from './components/PreviewModal.vue';
+  import { useModal } from '@/components/Modal';
   import RightPanel from './components/RightPanel/index.vue';
   import { useMessage } from '@/hooks/web/useMessage';
   import { useI18n } from '@/hooks/web/useI18n';
@@ -119,6 +127,7 @@
   const props = defineProps(['formInfo']);
   const { prefixCls } = useDesign('basic-generator');
   const { t } = useI18n();
+  const [registerPreviewModal, { openModal: openPreviewModal }] = useModal();
   const { createMessage, createConfirm } = useMessage();
   let tempActiveData;
 
@@ -211,7 +220,7 @@
   // 预览表单
   function handlePreview() {
     assembleFormData();
-    console.log(state.formConf);
+    openPreviewModal(true, { formConf: unref(state.formConf) });
   }
   // 清空
   function handleClear() {
@@ -227,6 +236,10 @@
   }
   function addLocalRecord(val) {
     addRecord(val);
+  }
+  function handleFormInfo() {
+    assembleFormData();
+    console.log(state.formConf);
   }
   // 复制表单项
   function drawingItemCopy(item, parent, isActiveFormItem = true) {

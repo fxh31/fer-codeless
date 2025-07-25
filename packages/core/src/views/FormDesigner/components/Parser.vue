@@ -1,7 +1,12 @@
 <script lang="tsx">
-  import { defineComponent, ref, watch, computed, unref, toRaw } from 'vue';
+  import type { FormInstance } from 'ant-design-vue';
+
+  import { defineComponent, ref, watch, computed, unref, reactive, toRaw } from 'vue';
+  import { cloneDeep, upperFirst } from 'lodash-es';
   import { buildUUID } from '@fer-codeless/utils';
+  import { getScriptFunc } from '@fer-codeless/utils';
   import { useI18n } from '@/hooks/web/useI18n';
+  import render from '@/helper/render';
 
   interface State {
     formData: any;
@@ -13,6 +18,8 @@
   }
 
   export default defineComponent({
+    props: ['formConf'],
+    components: { render },
     setup(props, { expose, emit }) {
       const state = reactive<State>({
         formData: {},
@@ -22,44 +29,40 @@
         options: {},
         formConfCopy: {},
       });
-      state.formConfCopy = cloneDeep(props.formConf);
+      const formElRef = ref<FormInstance>();
 
+      state.formConfCopy = cloneDeep(props.formConf);
       const layouts = {
         colFormItem(element, index, parent) {
-          const { onActiveItem } = attrs as AttrsType;
           const config = element.__config__;
-          const className = props.activeId === config.formId ? 'drawing-item active-from-item' : 'drawing-item';
+          const listeners = buildListeners(element);
           const globalLabelWidth = props.formConf.labelWidth;
           let labelCol = {};
           if (props.formConf.labelPosition !== 'top' && config.showLabel) {
             const labelWidth = (config.labelWidth || globalLabelWidth) + 'px';
+            if (!config.showLabel) labelWidth = '0px';
             labelCol = { style: { width: labelWidth } };
           }
           const Item = (
-            <render
-              key={config.renderKey}
-              conf={element}
-              size={element.size ? element.size : props.formConf.size}
-              onUpdate:value={v => {
-                config.defaultValue = v;
-              }}
-            />
+            <render key={config.renderKey} formData={state.formData} conf={element} size={element.size ? element.size : props.formConf.size} {...listeners} />
           );
 
           let basicHelp: any = null;
-          if (config.label && config.tipLabel) basicHelp = <BasicHelp text={config.tipLabel} />;
-          const labelSuffix = !config.isSubTable && props.formConf.labelSuffix ? props.formConf.labelSuffix : '';
-          const slots = {
+          const label = config.label;
+          const tipLabel = config.tipLabel;
+          if (config.showLabel && label && tipLabel) basicHelp = <BasicHelp text={tipLabel} />;
+          let slots: any = {
             label: () => {
               if (!config.showLabel) return null;
               return (
                 <span>
-                  {config.label ? config.label + labelSuffix : ''}
+                  {label ? label + (props.formConf.labelSuffix || '') : ''}
                   {basicHelp}
                 </span>
               );
             },
           };
+          if (!config.showLabel) slots = {};
 
           return (
             <a-col span={config.span} class={[...(config.className || []), 'ant-col-item']}>
@@ -82,8 +85,39 @@
         return className;
       });
 
-      function renderFrom() {
+      // 绑定组件监听器
+      function buildListeners(scheme) {
+        const config = scheme.__config__;
+        const listeners: any = {};
+
+        if (scheme.on) {
+          Object.keys(scheme.on).forEach(key => {
+            const str = scheme.on[key];
+            const func: any = getScriptFunc(str);
+            if (!func) return;
+            // 事件监听器
+            listeners['on' + upperFirst(key)] = (...arg) => {
+              if (key === 'change') {
+                const data = arg.length > 1 ? arg[1] : arg[0];
+                func({ data });
+              } else {
+                func({ data });
+              }
+            };
+          });
+        }
+
+        // 响应 render.ts 中的 buildVModel 中 emit('update:value', val);
+        listeners['onUpdate:value'] = event => {
+          config.defaultValue = event;
+          state.formData[scheme.__vModel__] = event;
+        };
+        return listeners;
+      }
+      // 渲染表单
+      function renderForm() {
         let labelCol = { style: { width: state.formConfCopy.labelWidth + 'px' } };
+        console.log(props.formConf);
         return (
           <a-row class={unref(getFormClass)}>
             <a-form
@@ -103,15 +137,13 @@
           </a-row>
         );
       }
-
       function renderFormItem(elementList) {
-        console.log(elementList);
-        // return elementList.map(scheme => {
-        //   const config = scheme.__config__;
-        //   const layout = layouts[config.layout];
-        //   if (layout) return layout(scheme);
-        //   return null;
-        // });
+        return elementList.map(scheme => {
+          const config = scheme.__config__;
+          const layout = layouts[config.layout];
+          if (layout) return layout(scheme);
+          return null;
+        });
       }
 
       return () => {
