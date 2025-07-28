@@ -20,8 +20,12 @@
           <a-form-item label="标题提示">
             <a-input v-model:value="activeData.__config__.tipLabel" placeholder="请输入" />
           </a-form-item>
-          <a-form-item label="默认值">
-            <a-input v-model:value="activeData.__config__.defaultValue" placeholder="请输入" />
+          <component :is="getRightComp" v-bind="getRightCompBind" :key="activeData.__config__.renderKey" />
+          <a-form-item label="是否禁用">
+            <a-switch v-model:checked="activeData.disabled" />
+          </a-form-item>
+          <a-form-item label="是否隐藏">
+            <a-switch v-model:checked="activeData.__config__.noShow" />
           </a-form-item>
           <div v-if="activeData.on">
             <a-divider>脚本事件</a-divider>
@@ -39,15 +43,18 @@
 </template>
 
 <script lang="ts" setup>
-  import { reactive, toRefs, computed, unref } from 'vue';
+  import { reactive, toRefs, computed, unref, useAttrs } from 'vue';
+  import { upperFirst } from 'lodash-es';
   import { inputComponents } from '@/helper/componentMap';
   import { ScrollContainer } from '@/components/Container';
   import StylePane from './components/StylePane.vue';
   import FormAttrPane from './components/FormAttrPane.vue';
   import FormScript from './components/FormScript.vue';
+  import * as RightComp from './rightComponents';
   import { useModal } from '@/components/Modal';
 
   const props = defineProps(['activeData', 'formConf', 'drawingList', 'formInfo']);
+  const attrs = useAttrs();
   const [registerScriptModal, { openModal: openScriptModal }] = useModal();
   const state = reactive({
     activeKey: 'field',
@@ -63,6 +70,20 @@
     if (!comp.length) return '';
     return comp[0].__config__.label;
   });
+  /**
+   * 右侧表单动态组件（不同组件独有的组件属性）
+   */
+  const getRightComp = computed(() => {
+    if (!unref(ferKey)) return null;
+    // todo：根据不同的表单进行过滤
+    return RightComp['R' + upperFirst(unref(ferKey))];
+  });
+  const getRightCompBind = computed(() => ({
+    activeData: props.activeData,
+    ...unref(attrs),
+    drawingList: props.drawingList,
+    formInfo: unref(props.formInfo),
+  }));
 
   /**
    * 脚本事件

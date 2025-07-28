@@ -64,13 +64,15 @@
           };
           if (!config.showLabel) slots = {};
 
-          return (
-            <a-col span={config.span} class={[...(config.className || []), 'ant-col-item']}>
-              <a-form-item v-slots={slots} required={config.required} labelCol={labelCol}>
-                {Item}
-              </a-form-item>
-            </a-col>
-          );
+          if (!config.noShow) {
+            return (
+              <a-col span={config.span} class={[...(config.className || []), 'ant-col-item']}>
+                <a-form-item v-slots={slots} required={config.required} labelCol={labelCol}>
+                  {Item}
+                </a-form-item>
+              </a-col>
+            );
+          }
         },
       };
 
@@ -118,7 +120,7 @@
       // 渲染表单
       function renderForm() {
         const labelCol = { style: { width: state.formConfCopy.labelWidth + 'px' } };
-        console.log(getFormClass.value);
+
         return (
           <a-row class={unref(getFormClass)}>
             <a-form

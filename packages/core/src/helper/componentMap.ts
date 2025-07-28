@@ -62,11 +62,17 @@ export const inputComponents: GenItem[] = [
       dragDisabled: false,
       span: 24,
       defaultValue: undefined,
+      noShow: false, // 是否隐藏
     },
     style: { width: '100%' },
+    placeholder: '请输入',
     on: {
       change: '({ data }) => {\n    // 在此编写代码\n    \n}',
     },
+    allowClear: true,
+    maxlength: null,
+    readonly: false,
+    disabled: false,
   },
   {
     __config__: {
@@ -79,11 +85,21 @@ export const inputComponents: GenItem[] = [
       dragDisabled: false,
       span: 24,
       defaultValue: undefined,
+      noShow: false, // 是否隐藏
     },
     style: { width: '100%' },
+    placeholder: '请输入',
     on: {
       change: '({ data }) => {\n    // 在此编写代码\n    \n}',
     },
+    autoSize: {
+      minRows: 4,
+      maxRows: 4,
+    },
+    allowClear: true,
+    maxlength: null,
+    readonly: false,
+    disabled: false,
   },
 ];
 

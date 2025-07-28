@@ -1,5 +1,5 @@
 // 二次封装组件（Fer）
-import { FerInput } from './Input';
+import { FerInput, FerTextarea } from './Input';
 import { FerRadio } from './Radio';
 
-export { FerInput, FerRadio };
+export { FerInput, FerTextarea, FerRadio };
