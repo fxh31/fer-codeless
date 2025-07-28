@@ -104,8 +104,30 @@ export const inputComponents: GenItem[] = [
     disabled: false,
   },
 ];
-
-export const selectComponents = [];
+// 左面板 - 高级组件
+export const advanceComponents = [
+  {
+    __config__: {
+      ferKey: 'iframe',
+      label: 'Iframe',
+      labelWidth: undefined,
+      showLabel: true,
+      tag: 'FerIframe',
+      className: [],
+      defaultValue: null,
+      required: false,
+      layout: 'colFormItem',
+      span: 24,
+      dragDisabled: false,
+      noShow: false,
+    },
+    href: '',
+    height: 300,
+    borderType: 'solid',
+    borderColor: '#E2E0E0',
+    borderWidth: 1,
+  },
+];
 // 左面板 - 系统组件
 export const systemComponents = [];
 // 左面板 - 布局组件

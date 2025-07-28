@@ -71,7 +71,6 @@
       }
 
       return () => {
-        console.log('999');
         return (
           <Tooltip
             overlayClassName={`${prefixCls}__wrap`}

@@ -112,7 +112,7 @@
   import { useRedo } from '../../hooks/useRedo';
   import { useDesign } from '@/hooks/web/useDesign';
 
-  import { inputComponents, selectComponents, systemComponents, layoutComponents, formConf as defaultFormConf } from '../../helper/componentMap';
+  import { inputComponents, advanceComponents, systemComponents, layoutComponents, formConf as defaultFormConf } from '../../helper/componentMap';
 
   interface State {
     leftComponents: any[];
@@ -134,7 +134,7 @@
   const state = reactive<State>({
     leftComponents: [
       { id: '1', title: '基础组件', list: inputComponents },
-      { id: '2', title: '高级组件', list: selectComponents },
+      { id: '2', title: '高级组件', list: advanceComponents },
       { id: '3', title: '系统组件', list: systemComponents },
       { id: '4', title: '布局组件', list: layoutComponents },
     ],
