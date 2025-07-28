@@ -4,7 +4,7 @@
     <a-form-item label="标题宽度">
       <a-input-number v-model:value="activeData.__config__.labelWidth" placeholder="请输入" :min="0" />
     </a-form-item>
-    <a-form-item>
+    <a-form-item v-if="!noWithList.includes(ferKey) && activeData.style">
       <template #label>
         <span class="form-title-item"> 控件宽度 </span>
         <BasicHelp text="支持%和px两种宽度设置" />
@@ -19,10 +19,13 @@
 </template>
 
 <script lang="ts" setup>
+  import { unref, computed } from 'vue';
   import { BasicHelp } from '@/components/Basic';
+  import { noWithList } from '@/helper/rightPanel';
   const sliderMarks = { 2: 2, 4: 4, 6: 6, 8: 8, 10: 10, 12: 12, 14: 14, 16: 16, 18: 18, 20: 20, 22: 22, 24: 24 };
 
   const props = defineProps(['activeData']);
+  const ferKey = computed(() => unref(props.activeData).__config__?.ferKey);
 </script>
 
 <style lang="css">

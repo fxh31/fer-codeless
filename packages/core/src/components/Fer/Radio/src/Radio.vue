@@ -64,7 +64,7 @@
   }
 </script>
 <style lang="less">
-  @import '@/index.less';
+  @import '@/design.less';
   @prefix-cls: ~'@{namespace}-vertical-radio';
 
   @{prefix-cls} {

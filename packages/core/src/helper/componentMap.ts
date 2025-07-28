@@ -55,6 +55,7 @@ export const inputComponents: GenItem[] = [
     __config__: {
       ferKey: 'input',
       label: '单行输入',
+      tag: 'FerInput',
       tipLabel: '',
       labelWidth: undefined,
       showLabel: true,
@@ -78,6 +79,7 @@ export const inputComponents: GenItem[] = [
     __config__: {
       ferKey: 'textarea',
       label: '多行输入',
+      tag: 'FerTextarea',
       tipLabel: '',
       labelWidth: undefined,
       showLabel: true,
@@ -104,5 +106,25 @@ export const inputComponents: GenItem[] = [
 ];
 
 export const selectComponents = [];
+// 左面板 - 系统组件
 export const systemComponents = [];
-export const layoutComponents = [];
+// 左面板 - 布局组件
+export const layoutComponents = [
+  {
+    __config__: {
+      ferKey: 'divider',
+      label: '分割线',
+      labelWidth: undefined,
+      showLabel: false,
+      className: [],
+      defaultValue: null,
+      required: false,
+      layout: 'colFormItem',
+      span: 24,
+      dragDisabled: false,
+      noShow: false,
+    },
+    content: '我是分割线',
+    contentPosition: 'center',
+  },
+];

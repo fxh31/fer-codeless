@@ -2,6 +2,7 @@
   import type { FormInstance } from 'ant-design-vue';
 
   import { defineComponent, ref, watch, computed, unref, reactive, toRaw } from 'vue';
+  import { BasicHelp } from '@/components/Basic';
   import { cloneDeep, upperFirst } from 'lodash-es';
   import { buildUUID } from '@fer-codeless/utils';
   import { getScriptFunc } from '@fer-codeless/utils';
@@ -62,6 +63,7 @@
               );
             },
           };
+
           if (!config.showLabel) slots = {};
 
           if (!config.noShow) {

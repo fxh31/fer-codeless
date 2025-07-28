@@ -71,6 +71,7 @@
       }
 
       return () => {
+        console.log('999');
         return (
           <Tooltip
             overlayClassName={`${prefixCls}__wrap`}
@@ -87,7 +88,7 @@
   });
 </script>
 <style lang="less">
-  @import '@/index.less';
+  @import '@/design.less';
   @prefix-cls: ~'@{namespace}-basic-help';
 
   .@{prefix-cls} {

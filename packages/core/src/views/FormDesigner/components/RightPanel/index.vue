@@ -11,13 +11,13 @@
           <a-form-item label="组件类型">
             <a-input v-model:value="getCompName" disabled />
           </a-form-item>
-          <a-form-item label="组件标题">
+          <a-form-item label="组件标题" v-if="!layoutList.includes(ferKey)">
             <a-input v-model:value="activeData.__config__.label" placeholder="请输入" />
           </a-form-item>
-          <a-form-item label="组件字段">
+          <a-form-item label="组件字段" v-if="!layoutList.includes(ferKey)">
             <a-input v-model:value="activeData.__vModel__" placeholder="请输入" />
           </a-form-item>
-          <a-form-item label="标题提示">
+          <a-form-item label="标题提示" v-if="hasTipLabel(ferKey)">
             <a-input v-model:value="activeData.__config__.tipLabel" placeholder="请输入" />
           </a-form-item>
           <component :is="getRightComp" v-bind="getRightCompBind" :key="activeData.__config__.renderKey" />
@@ -45,7 +45,8 @@
 <script lang="ts" setup>
   import { reactive, toRefs, computed, unref, useAttrs } from 'vue';
   import { upperFirst } from 'lodash-es';
-  import { inputComponents } from '@/helper/componentMap';
+  import { inputComponents, layoutComponents } from '@/helper/componentMap';
+  import { layoutList } from '@/helper/rightPanel';
   import { ScrollContainer } from '@/components/Container';
   import StylePane from './components/StylePane.vue';
   import FormAttrPane from './components/FormAttrPane.vue';
@@ -65,7 +66,7 @@
   const getBindValue = computed(() => ({ ...props }));
   const ferKey = computed(() => unref(props.activeData).__config__?.ferKey);
   const getCompName = computed(() => {
-    const allComps = [...inputComponents];
+    const allComps = [...inputComponents, ...layoutComponents];
     const comp = allComps.filter(o => o.__config__.ferKey === unref(ferKey));
     if (!comp.length) return '';
     return comp[0].__config__.label;
@@ -107,5 +108,11 @@
   // 修改脚本
   function updateScript(data) {
     props.activeData.on[state.activeFunc] = data;
+  }
+  /**
+   * 控制标题提示配置
+   */
+  function hasTipLabel(ferKey) {
+    return ![...layoutList].includes(ferKey);
   }
 </script>

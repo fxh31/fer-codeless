@@ -1,13 +1,16 @@
-// 可自定或者二次封装函数
+/**
+ * 可自定或者二次封装函数
+ */
 // import { Textarea } from 'ant-design-vue';
-import { FerInput, FerTextarea } from '@/components/Fer';
-import { FerRadio } from '@/components/Fer';
+// 二次封装（获修改其命名）组件 - fer
+import { FerInput, FerTextarea, FerRadio, FerDivider } from '@/components/Fer';
 
 const componentMap = new Map();
+// componentMap.set('Textarea', Textarea);
 
 componentMap.set('Input', FerInput);
 componentMap.set('Textarea', FerTextarea);
 componentMap.set('Radio', FerRadio);
-// componentMap.set('Textarea', Textarea);
+componentMap.set('Divider', FerDivider);
 
 export { componentMap };
