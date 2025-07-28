@@ -21,12 +21,14 @@
             <a-input v-model:value="activeData.__config__.tipLabel" placeholder="请输入" />
           </a-form-item>
           <component :is="getRightComp" v-bind="getRightCompBind" :key="activeData.__config__.renderKey" />
-          <a-form-item label="是否禁用">
-            <a-switch v-model:checked="activeData.disabled" />
-          </a-form-item>
-          <a-form-item label="是否隐藏">
-            <a-switch v-model:checked="activeData.__config__.noShow" />
-          </a-form-item>
+          <div v-if="![...layoutList].includes(ferKey)">
+            <a-form-item label="是否禁用">
+              <a-switch v-model:checked="activeData.disabled" />
+            </a-form-item>
+            <a-form-item label="是否隐藏">
+              <a-switch v-model:checked="activeData.__config__.noShow" />
+            </a-form-item>
+          </div>
           <div v-if="activeData.on">
             <a-divider>脚本事件</a-divider>
             <a-form-item :label="key" v-for="(_value, key) in activeData.on" :key="key">
