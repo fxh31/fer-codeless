@@ -1,4 +1,4 @@
-export const layoutList = ['divider'];
+export const layoutList = ['divider', 'groupTitle'];
 
 // 不设置宽度的组件
 export const noWithList = [...layoutList];

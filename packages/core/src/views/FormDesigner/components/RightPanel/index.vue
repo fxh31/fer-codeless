@@ -11,9 +11,11 @@
           <a-form-item label="组件类型">
             <a-input v-model:value="getCompName" disabled />
           </a-form-item>
-          <a-form-item label="组件字段" v-if="!noVModelList.includes(ferKey)">
-            <a-input v-model:value="activeData.__vModel__" placeholder="请输入" />
-          </a-form-item>
+          <div v-if="noVModelList.includes(ferKey)">
+            <a-form-item label="组件字段" v-if="!noVModelList.includes(ferKey)">
+              <a-input v-model:value="activeData.__vModel__" placeholder="请输入" />
+            </a-form-item>
+          </div>
           <a-form-item label="组件标题" v-if="!layoutList.includes(ferKey)">
             <a-input v-model:value="activeData.__config__.label" placeholder="请输入" />
           </a-form-item>

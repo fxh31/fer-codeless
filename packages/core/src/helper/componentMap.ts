@@ -134,10 +134,30 @@ export const systemComponents = [];
 export const layoutComponents = [
   {
     __config__: {
+      ferKey: 'groupTitle',
+      label: '分组标题',
+      labelWidth: undefined,
+      showLabel: false,
+      tag: 'FerGroupTitle', // 实际渲染组件
+      className: [],
+      defaultValue: null,
+      required: false,
+      layout: 'colFormItem',
+      span: 24,
+      dragDisabled: false,
+      noShow: false,
+    },
+    helpMessage: '',
+    content: '分组标题',
+    contentPosition: 'left',
+  },
+  {
+    __config__: {
       ferKey: 'divider',
       label: '分割线',
       labelWidth: undefined,
       showLabel: false,
+      tag: 'FerDivider',
       className: [],
       defaultValue: null,
       required: false,

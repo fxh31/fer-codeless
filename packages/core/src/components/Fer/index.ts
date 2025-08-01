@@ -4,4 +4,9 @@ import { FerRadio } from './Radio';
 import { FerDivider } from './Divider';
 import { FerIframe } from './Iframe';
 
-export { FerInput, FerTextarea, FerRadio, FerDivider, FerIframe };
+import { BasicCaption } from '@/components/Basic';
+
+const FerGroupTitle = BasicCaption;
+FerGroupTitle.name = 'FerGroupTitle';
+
+export { FerInput, FerTextarea, FerRadio, FerDivider, FerIframe, FerGroupTitle };
