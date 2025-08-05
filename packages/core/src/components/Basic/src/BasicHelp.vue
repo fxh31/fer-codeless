@@ -87,7 +87,6 @@
   });
 </script>
 <style lang="less">
-  @import '@/design.less';
   @prefix-cls: ~'@{namespace}-basic-help';
 
   .@{prefix-cls} {

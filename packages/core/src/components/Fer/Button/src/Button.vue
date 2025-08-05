@@ -17,7 +17,6 @@
   const getBindValue = computed(() => omit({ ...unref(attrs), ...props }, ['align', 'buttonText']));
 </script>
 <style lang="less" scoped>
-  @import '@/design.less';
   @prefix-cls: ~'@{namespace}-button';
   .@{prefix-cls} {
     // width: 100%;

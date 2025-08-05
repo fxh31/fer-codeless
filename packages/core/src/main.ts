@@ -1,4 +1,4 @@
-import './index.less';
+import '@/design/index.less';
 import { createApp } from 'vue';
 import { setupI18n } from './locales/setupI18n';
 import { registerGlobComp } from './components/registerGlobComp';

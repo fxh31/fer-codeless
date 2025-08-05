@@ -36,7 +36,6 @@
   const getClass = computed(() => [prefixCls, { [`${prefixCls}-show-span`]: props.span && slots.default }, { [`${prefixCls}-normal`]: props.normal }]);
 </script>
 <style lang="less" scoped>
-  @import '@/design.less';
   @prefix-cls: ~'@{namespace}-basic-title';
 
   .@{prefix-cls} {

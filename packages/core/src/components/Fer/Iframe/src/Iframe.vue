@@ -28,7 +28,6 @@
   });
 </script>
 <style lang="less">
-  @import '@/design.less';
   @prefix-cls: ~'@{namespace}-iframe';
 
   .@{prefix-cls} {
