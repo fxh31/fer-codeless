@@ -18,7 +18,7 @@ export const formConf = {
   // disabled: false,
   // span: 24,
   colon: false,
-  classNames: [],
+  classNames: [], // 表单属性 - 表单CSS
   className: [],
   // hasCancelBtn: true,
   // cancelButtonText: '取消',
@@ -39,7 +39,7 @@ export const formConf = {
   // businessKeyList: [],
   // businessKeyTip: '数据已存在，请勿重复提交！',
   // printId: '',
-  // classJson: '',
+  classJson: '', // 表单属性 - classJson
   // funcs: {
   //   onLoad: '({ formData, setFormData, setShowOrHide, setRequired, setDisabled, onlineUtils }) => {\n    // 在此编写代码\n    \n}',
   //   beforeSubmit:

@@ -123,6 +123,7 @@
       function renderForm() {
         const labelCol = { style: { width: state.formConfCopy.labelWidth + 'px' } };
 
+        console.log(getFormClass);
         return (
           <a-row class={unref(getFormClass)}>
             <a-form

@@ -1,5 +1,5 @@
 <template>
-  <a-form-item label="控件文本">
+  <a-form-item label="组件文本">
     <fer-input v-model:value="activeData.buttonText" placeholder="请输入" />
   </a-form-item>
   <a-form-item label="对齐方式">
