@@ -26,6 +26,7 @@
     props: ['element', 'index', 'drawingList', 'activeId', 'formConf', 'showType'],
     setup(props, { attrs }) {
       const { t } = useI18n();
+      const useCompList = ['groupTitle', 'button'];
 
       const components = {
         // 表单项按钮

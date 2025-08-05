@@ -106,7 +106,7 @@
                 const data = arg.length > 1 ? arg[1] : arg[0];
                 func({ data });
               } else {
-                func({ data });
+                func({ data: arg[0] });
               }
             };
           });

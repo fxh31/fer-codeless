@@ -1,9 +1,11 @@
 import antDeSign from 'ant-design-vue';
 
-import { FerRadio } from './Fer/index';
+import { FerRadio, FerInput, FerButton } from './Fer/index';
 
 export function registerGlobComp(app: App) {
   app.use(antDeSign);
 
   app.use(FerRadio);
+  app.use(FerInput);
+  app.use(FerButton);
 }

@@ -100,6 +100,10 @@
       case 'change':
         text = '发生变化时触发';
         break;
+      case 'click':
+        text = '点击时触发';
+        break;
+      default:
         text = '';
         break;
     }

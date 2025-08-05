@@ -3,7 +3,7 @@
  */
 // import { Textarea } from 'ant-design-vue';
 // 二次封装（获修改其命名）组件 - fer
-import { FerInput, FerTextarea, FerRadio, FerDivider, FerIframe, FerGroupTitle } from '@/components/Fer';
+import { FerInput, FerTextarea, FerRadio, FerDivider, FerIframe, FerGroupTitle, FerButton } from '@/components/Fer';
 
 const componentMap = new Map();
 // componentMap.set('Textarea', Textarea);
@@ -14,5 +14,6 @@ componentMap.set('Radio', FerRadio);
 componentMap.set('Divider', FerDivider);
 componentMap.set('Iframe', FerIframe);
 componentMap.set('GroupTitle', FerGroupTitle);
+componentMap.set('Button', FerButton);
 
 export { componentMap };

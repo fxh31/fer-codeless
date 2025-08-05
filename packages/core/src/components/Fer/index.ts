@@ -3,10 +3,11 @@ import { FerInput, FerTextarea } from './Input';
 import { FerRadio } from './Radio';
 import { FerDivider } from './Divider';
 import { FerIframe } from './Iframe';
+import { FerButton } from './Button';
 
 import { BasicCaption } from '@/components/Basic';
 
 const FerGroupTitle = BasicCaption;
 FerGroupTitle.name = 'FerGroupTitle';
 
-export { FerInput, FerTextarea, FerRadio, FerDivider, FerIframe, FerGroupTitle };
+export { FerInput, FerTextarea, FerRadio, FerDivider, FerIframe, FerGroupTitle, FerButton };
