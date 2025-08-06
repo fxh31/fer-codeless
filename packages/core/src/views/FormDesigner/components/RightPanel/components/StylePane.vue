@@ -12,7 +12,7 @@
       <a-input v-model:value="activeData.style.width" placeholder="请输入" />
     </a-form-item>
     <a-form-item>
-      <template #label>组件Class</template>
+      <template #label><span class="form-title-item">组件Class</span><BasicHelp text="需先在表单属性编写样式，获取对应类名" /></template>
       <fer-select v-model:innerValue="activeData.__config__.className" multiple allowClear :options="getClassNameOptions" />
     </a-form-item>
   </a-form>
