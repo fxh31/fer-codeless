@@ -4,3 +4,4 @@ export { default as RDivider } from './RDivider.vue';
 export { default as RIframe } from './RIframe.vue';
 export { default as RGroupTitle } from './RGroupTitle.vue';
 export { default as RButton } from './RButton.vue';
+export { default as RSelect } from './RSelect.vue';

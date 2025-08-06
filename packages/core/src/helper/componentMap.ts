@@ -66,10 +66,10 @@ export const inputComponents: GenItem[] = [
       noShow: false, // 是否隐藏
     },
     style: { width: '100%' },
-    placeholder: '请输入',
     on: {
       change: '({ data }) => {\n    // 在此编写代码\n    \n}',
     },
+    placeholder: '请输入',
     allowClear: true,
     maxlength: null,
     readonly: false,
@@ -90,7 +90,6 @@ export const inputComponents: GenItem[] = [
       noShow: false, // 是否隐藏
     },
     style: { width: '100%' },
-    placeholder: '请输入',
     on: {
       change: '({ data }) => {\n    // 在此编写代码\n    \n}',
     },
@@ -98,10 +97,73 @@ export const inputComponents: GenItem[] = [
       minRows: 4,
       maxRows: 4,
     },
+    placeholder: '请输入',
     allowClear: true,
     maxlength: null,
     readonly: false,
     disabled: false,
+  },
+  {
+    __config__: {
+      ferKey: 'inputNumber',
+      label: '数字输入',
+      tag: 'FerInputNumber',
+      tipLabel: '',
+      labelWidth: undefined,
+      showLabel: true,
+      layout: 'colFormItem',
+      dragDisabled: false,
+      span: 24,
+      defaultValue: undefined,
+      noShow: false, // 是否隐藏
+    },
+    style: { width: '100%' },
+    on: {
+      change: '({ data }) => {\n    // 在此编写代码\n    \n}',
+    },
+    placeholder: '请输入',
+    min: undefined,
+    max: undefined,
+  },
+  {
+    __config__: {
+      ferKey: 'select',
+      label: '下拉选择',
+      tag: 'FerSelect',
+      tipLabel: '',
+      labelWidth: undefined,
+      showLabel: true,
+      layout: 'colFormItem',
+      dragDisabled: false,
+      span: 24,
+      defaultValue: undefined,
+      noShow: false, // 是否隐藏
+      dataType: 'static', // 数据类型 - 默认静态数据
+    },
+    style: { width: '100%' },
+    on: {
+      change: '({ data }) => {\n    // 在此编写代码\n    \n}',
+    },
+    options: [
+      {
+        id: '1',
+        fullName: '选项1',
+        children: [
+          {
+            id: '2',
+            fullName: '选项1-1',
+          },
+        ],
+      },
+    ],
+    props: {
+      value: 'id',
+      label: 'fullName',
+      children: 'children',
+    },
+    placeholder: '请选择',
+    disabled: false,
+    multiple: false, // 是否多选
   },
   {
     __config__: {

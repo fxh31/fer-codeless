@@ -59,6 +59,7 @@ export default defineComponent({
       if (!Comp) return null;
 
       const realDataObject = getRealProps(dataObject, props.conf.__config__.ferKey);
+      console.log('realProp', realDataObject);
       return h(Comp, realDataObject as any);
     };
   },
