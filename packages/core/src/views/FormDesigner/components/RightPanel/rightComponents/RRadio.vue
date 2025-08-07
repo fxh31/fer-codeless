@@ -10,7 +10,7 @@
   <a-form-item label="排列方式">
     <fer-radio v-model:value="activeData.direction" :options="directionOptions" optionType="button" buttonStyle="solid" />
   </a-form-item>
-  <data-properties :activeData="activeData" :dicOptions="dicOptions" />
+  <DataProperties :activeData="activeData" :dicOptions="dicOptions" />
 
   <a-form-item label="选项样式">
     <fer-radio v-model:value="activeData.optionType" :options="optionTypeOptions" optionType="button" buttonStyle="solid" />

@@ -188,10 +188,46 @@ export const inputComponents: GenItem[] = [
       label: 'fullName',
       value: 'id',
     },
-    direction: 'horizontal',
+    direction: 'horizontal', // 排列方向
     optionType: 'default',
     buttonStyle: 'solid',
     size: 'default',
+    disabled: false,
+  },
+  {
+    __config__: {
+      ferKey: 'checkbox',
+      label: '多选框组',
+      tag: 'FerCheckbox',
+      tipLabel: '',
+      labelWidth: undefined,
+      showLabel: true,
+      layout: 'colFormItem',
+      dragDisabled: false,
+      span: 24,
+      defaultValue: undefined,
+      noShow: false, // 是否隐藏
+      dataType: 'static',
+    },
+    on: {
+      change: '({ data }) => {\n    // 在此编写代码\n    \n}',
+    },
+    style: { width: '100%' },
+    options: [
+      {
+        fullName: '选项一',
+        id: '1',
+      },
+      {
+        fullName: '选项二',
+        id: '2',
+      },
+    ],
+    props: {
+      label: 'fullName',
+      value: 'id',
+    },
+    direction: 'horizontal',
     disabled: false,
   },
   {
