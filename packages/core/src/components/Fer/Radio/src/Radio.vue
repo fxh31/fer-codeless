@@ -66,7 +66,7 @@
 <style lang="less">
   @prefix-cls: ~'@{namespace}-vertical-radio';
 
-  @{prefix-cls} {
+  .@{prefix-cls} {
     .ant-radio-wrapper {
       display: flex;
       margin-right: 0;
