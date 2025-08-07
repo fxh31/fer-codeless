@@ -121,9 +121,16 @@ export const inputComponents: GenItem[] = [
     on: {
       change: '({ data }) => {\n    // 在此编写代码\n    \n}',
     },
+    min: undefined, // 最小值
+    max: undefined, // 最大值
+    controls: false, // 按钮（可结合 step 控制步长）
+    step: 1, // 步长
     placeholder: '请输入',
-    min: undefined,
-    max: undefined,
+    addonBefore: '',
+    addonAfter: '',
+    thousands: false, // 千位分隔
+    precision: undefined, // 精度
+    isAmountChinese: false, // 大写金额
   },
   {
     __config__: {

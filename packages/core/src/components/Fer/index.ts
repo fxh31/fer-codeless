@@ -5,10 +5,11 @@ import { FerDivider } from './Divider';
 import { FerIframe } from './Iframe';
 import { FerButton } from './Button';
 import { FerSelect } from './Select';
+import { FerInputNumber } from './InputNumber';
 
 import { BasicCaption } from '@/components/Basic';
 
 const FerGroupTitle = BasicCaption;
 FerGroupTitle.name = 'FerGroupTitle';
 
-export { FerInput, FerTextarea, FerRadio, FerDivider, FerIframe, FerGroupTitle, FerButton, FerSelect };
+export { FerInput, FerTextarea, FerRadio, FerDivider, FerIframe, FerGroupTitle, FerButton, FerSelect, FerInputNumber };

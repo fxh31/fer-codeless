@@ -239,7 +239,6 @@
   }
   function handleFormInfo() {
     assembleFormData();
-    console.log(state.formConf);
   }
   // 复制表单项
   function drawingItemCopy(item, parent, isActiveFormItem = true) {

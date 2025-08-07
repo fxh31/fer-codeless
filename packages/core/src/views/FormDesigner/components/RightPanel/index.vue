@@ -11,13 +11,17 @@
           <a-form-item label="组件类型">
             <a-input v-model:value="getCompName" disabled />
           </a-form-item>
-          <div v-if="noVModelList.includes(ferKey)">
-            <a-form-item label="组件字段" v-if="!noVModelList.includes(ferKey)">
+          <div v-if="!noVModelList.includes(ferKey)">
+            <a-form-item>
+              <template #label>组件字段<BasicHelp text="表单里对应组件的字段名称" /> </template>
               <a-input v-model:value="activeData.__vModel__" placeholder="请输入" />
             </a-form-item>
           </div>
           <a-form-item label="组件标题" v-if="!layoutList.includes(ferKey)">
             <a-input v-model:value="activeData.__config__.label" placeholder="请输入" />
+          </a-form-item>
+          <a-form-item label="显示标题" v-if="!layoutList.includes(ferKey)">
+            <a-switch v-model:checked="activeData.__config__.showLabel" />
           </a-form-item>
           <a-form-item label="标题提示" v-if="hasTipLabel(ferKey)">
             <a-input v-model:value="activeData.__config__.tipLabel" placeholder="请输入" />
@@ -58,6 +62,7 @@
   import FormScript from './components/FormScript.vue';
   import * as RightComp from './rightComponents';
   import { useModal } from '@/components/Modal';
+  import { BasicHelp } from '@/components/Basic';
 
   const props = defineProps(['activeData', 'formConf', 'drawingList', 'formInfo']);
   const attrs = useAttrs();
