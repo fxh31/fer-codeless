@@ -86,3 +86,30 @@ export function thousandsFormat(num) {
   numArr[0] = numArr[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   return numArr.join('.');
 }
+/**
+ * 时间日期转换函数
+ */
+export function getDateTimeUnit(format) {
+  if (format == 'YYYY' || format == 'yyyy') return 'year';
+  if (format == 'YYYY-MM' || format == 'yyyy-MM') return 'month';
+  if (format == 'YYYY-MM-DD' || format == 'yyyy-MM-dd') return 'day';
+  if (format == 'YYYY-MM-DD HH:mm' || format == 'yyyy-MM-dd HH:mm') return 'minute';
+  if (format == 'YYYY-MM-DD HH:mm:ss' || format == 'yyyy-MM-dd HH:mm:ss') return 'second';
+  return 'day';
+}
+export function getDateFormat(format) {
+  if (!format) return 'YYYY-MM-DD HH:mm:ss';
+  const formatObj = {
+    yyyy: 'YYYY',
+    'yyyy-MM': 'YYYY-MM',
+    'yyyy-MM-dd': 'YYYY-MM-DD',
+    'yyyy-MM-dd HH:mm': 'YYYY-MM-DD HH:mm',
+    'yyyy-MM-dd HH:mm:ss': 'YYYY-MM-DD HH:mm:ss',
+    YYYY: 'YYYY',
+    'YYYY-MM': 'YYYY-MM',
+    'YYYY-MM-DD': 'YYYY-MM-DD',
+    'YYYY-MM-DD HH:mm': 'YYYY-MM-DD HH:mm',
+    'YYYY-MM-DD HH:mm:ss': 'YYYY-MM-DD HH:mm:ss',
+  };
+  return formatObj[format] || 'YYYY-MM-DD HH:mm:ss';
+}

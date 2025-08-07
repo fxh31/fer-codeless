@@ -1,6 +1,6 @@
 import antDeSign from 'ant-design-vue';
 
-import { FerRadio, FerInput, FerButton, FerSelect, FerTextarea, FerCheckbox, FerCascader } from './Fer/index';
+import { FerRadio, FerInput, FerButton, FerSelect, FerTextarea, FerCheckbox, FerCascader, FerDatePicker, FerTimePicker } from './Fer/index';
 
 export function registerGlobComp(app: App) {
   app.use(antDeSign);
@@ -12,4 +12,6 @@ export function registerGlobComp(app: App) {
   app.use(FerSelect);
   app.use(FerCheckbox);
   app.use(FerCascader);
+  app.use(FerDatePicker);
+  app.use(FerTimePicker);
 }

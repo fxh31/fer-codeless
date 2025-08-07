@@ -1,7 +1,7 @@
 <template>
   <a-form-item label="默认值">
     <fer-select
-      v-model:value="activeData.__config__.defaultValue"
+      v-model:innerValue="activeData.__config__.defaultValue"
       placeholder="请选择"
       :options="activeData.options"
       :fieldNames="activeData.props"

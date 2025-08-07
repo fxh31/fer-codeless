@@ -16,6 +16,8 @@ import {
   FerSwitch,
   FerCheckbox,
   FerCascader,
+  FerDatePicker,
+  FerTimePicker,
 } from '@/components/Fer';
 
 const componentMap = new Map();
@@ -33,5 +35,7 @@ componentMap.set('InputNumber', FerInputNumber);
 componentMap.set('Switch', FerSwitch);
 componentMap.set('Checkbox', FerCheckbox);
 componentMap.set('Cascader', FerCascader);
+componentMap.set('DatePicker', FerDatePicker);
+componentMap.set('TimePicker', FerTimePicker);
 
 export { componentMap };

@@ -316,6 +316,64 @@ export const inputComponents: GenItem[] = [
   },
   {
     __config__: {
+      ferKey: 'datePicker',
+      label: '日期选择',
+      tag: 'FerDatePicker',
+      tipLabel: '',
+      labelWidth: undefined,
+      showLabel: true,
+      layout: 'colFormItem',
+      dragDisabled: false,
+      span: 24,
+      defaultValue: undefined,
+      noShow: false, // 是否隐藏
+      startTimeType: 1, // 开始时间类型
+      startTimeTarget: 1, // 验证开始时间目标类型
+      endTimeType: 1,
+      endTimeTarget: 1,
+    },
+    style: { width: '100%' },
+    on: {
+      change: '({ data }) => {\n    // 在此编写代码\n    \n}',
+    },
+    placeholder: '请选择',
+    allowClear: true, // 是否清空
+    format: 'yyyy-MM-dd',
+    startTime: null,
+    endTime: null,
+    disabled: false,
+  },
+  {
+    __config__: {
+      ferKey: 'timePicker',
+      label: '时间选择',
+      tag: 'FerTimePicker',
+      tipLabel: '',
+      labelWidth: undefined,
+      showLabel: true,
+      layout: 'colFormItem',
+      dragDisabled: false,
+      span: 24,
+      defaultValue: undefined,
+      noShow: false, // 是否隐藏
+      startTimeType: 1, // 开始时间类型
+      startTimeTarget: 1, // 验证开始时间目标类型
+      endTimeType: 1,
+      endTimeTarget: 1,
+    },
+    style: { width: '100%' },
+    on: {
+      change: '({ data }) => {\n    // 在此编写代码\n    \n}',
+    },
+    placeholder: '请选择',
+    allowClear: true, // 是否清空
+    format: 'HH:mm:ss',
+    startTime: null,
+    endTime: null,
+    disabled: false,
+  },
+  {
+    __config__: {
       ferKey: 'button',
       label: '按钮',
       tag: 'FerButton',
