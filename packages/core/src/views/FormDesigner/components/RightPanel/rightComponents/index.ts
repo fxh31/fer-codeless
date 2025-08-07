@@ -9,3 +9,4 @@ export { default as RInputNumber } from './RInputNumber.vue';
 export { default as RSwitch } from './RSwitch.vue';
 export { default as RRadio } from './RRadio.vue';
 export { default as RCheckbox } from './RCheckbox.vue';
+export { default as RCascader } from './RCascader.vue';

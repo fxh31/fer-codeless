@@ -268,7 +268,51 @@ export const inputComponents: GenItem[] = [
     },
     placeholder: '请选择',
     disabled: false,
+    allowClear: true, // 是否清空
+    // filterable: false, // 搜索
     multiple: false, // 是否多选
+  },
+  {
+    __config__: {
+      ferKey: 'cascader',
+      label: '级联选择',
+      tag: 'FerCascader',
+      tipLabel: '',
+      labelWidth: undefined,
+      showLabel: true,
+      layout: 'colFormItem',
+      dragDisabled: false,
+      span: 24,
+      defaultValue: undefined,
+      noShow: false, // 是否隐藏
+      dataType: 'static', // 数据类型 - 默认静态数据
+    },
+    style: { width: '100%' },
+    on: {
+      change: '({ data }) => {\n    // 在此编写代码\n    \n}',
+    },
+    options: [
+      {
+        id: '1',
+        fullName: '选项1',
+        children: [
+          {
+            id: '2',
+            fullName: '选项1-1',
+          },
+        ],
+      },
+    ],
+    props: {
+      value: 'id',
+      label: 'fullName',
+      children: 'children',
+    },
+    placeholder: '请选择',
+    disabled: false,
+    allowClear: true, // 是否清空
+    showSearch: true, // 搜索
+    multiple: false,
   },
   {
     __config__: {
