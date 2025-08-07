@@ -26,6 +26,9 @@
           <a-form-item label="标题提示" v-if="hasTipLabel(ferKey)">
             <a-input v-model:value="activeData.__config__.tipLabel" placeholder="请输入" />
           </a-form-item>
+          <a-form-item label="占位提示" v-if="activeData.placeholder !== undefined">
+            <a-input v-model:value="activeData.placeholder" placeholder="请输入" />
+          </a-form-item>
           <component :is="getRightComp" v-bind="getRightCompBind" :key="activeData.__config__.renderKey" />
           <div v-if="![...layoutList, ...noVModelList].includes(ferKey)">
             <a-form-item label="是否禁用">
