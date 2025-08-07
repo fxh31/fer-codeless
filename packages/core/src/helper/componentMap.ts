@@ -269,8 +269,8 @@ export const inputComponents: GenItem[] = [
     placeholder: '请选择',
     disabled: false,
     allowClear: true, // 是否清空
-    // filterable: false, // 搜索
-    multiple: false, // 是否多选
+    showSearch: true, // 搜索
+    multiple: false,
   },
   {
     __config__: {
