@@ -3,6 +3,15 @@ import { buildBitUUID } from '@fer-codeless/utils';
 
 export function useDynamic(activeData, initFieldData?) {
   const dataTypeOptions = [{ id: 'static', fullName: '静态数据' }];
+  const sizeOptions = [
+    { id: 'large', fullName: '较大' },
+    { id: 'default', fullName: '中等' },
+    { id: 'small', fullName: '较小' },
+  ];
+  const optionTypeOptions = [
+    { id: 'default', fullName: '默认' },
+    { id: 'button', fullName: '按钮' },
+  ];
 
   const defaultValue = computed(() => {
     if (activeData.__config__.ferKey === 'checkbox' || activeData.__config__.ferKey === 'cascader' || activeData.multiple) return [];
@@ -28,5 +37,5 @@ export function useDynamic(activeData, initFieldData?) {
     activeData.options = options;
   };
   /** -*/
-  return { onDataTypeChange, dataTypeOptions, addSelectItem, onMultipleChange, onBatchOperateConfirm };
+  return { onDataTypeChange, optionTypeOptions, sizeOptions, dataTypeOptions, addSelectItem, onMultipleChange, onBatchOperateConfirm };
 }

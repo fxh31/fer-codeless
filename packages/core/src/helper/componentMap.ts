@@ -157,6 +157,45 @@ export const inputComponents: GenItem[] = [
   },
   {
     __config__: {
+      ferKey: 'radio',
+      label: '单选框租',
+      tag: 'FerRadio',
+      tipLabel: '',
+      labelWidth: undefined,
+      showLabel: true,
+      layout: 'colFormItem',
+      dragDisabled: false,
+      span: 24,
+      defaultValue: undefined,
+      noShow: false, // 是否隐藏
+      dataType: 'static',
+    },
+    on: {
+      change: '({ data }) => {\n    // 在此编写代码\n    \n}',
+    },
+    style: { width: '100%' },
+    options: [
+      {
+        fullName: '选项一',
+        id: '1',
+      },
+      {
+        fullName: '选项二',
+        id: '2',
+      },
+    ],
+    props: {
+      label: 'fullName',
+      value: 'id',
+    },
+    direction: 'horizontal',
+    optionType: 'default',
+    buttonStyle: 'solid',
+    size: 'default',
+    disabled: false,
+  },
+  {
+    __config__: {
       ferKey: 'select',
       label: '下拉选择',
       tag: 'FerSelect',
