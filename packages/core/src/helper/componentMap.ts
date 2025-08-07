@@ -134,6 +134,29 @@ export const inputComponents: GenItem[] = [
   },
   {
     __config__: {
+      ferKey: 'switch',
+      label: '开关',
+      tag: 'FerSwitch',
+      tipLabel: '',
+      labelWidth: undefined,
+      showLabel: true,
+      layout: 'colFormItem',
+      dragDisabled: false,
+      span: 24,
+      defaultValue: undefined,
+      noShow: false, // 是否隐藏
+    },
+    on: {
+      change: '({ data }) => {\n    // 在此编写代码\n    \n}',
+    },
+    disabled: false,
+    checkedChildren: '开', // 选中时的内容
+    unCheckedChildren: '关', // 未选中时的内容
+    checkedValue: 1, // 选中时的值
+    unCheckedValue: 0, // 未选中时的值
+  },
+  {
+    __config__: {
       ferKey: 'select',
       label: '下拉选择',
       tag: 'FerSelect',

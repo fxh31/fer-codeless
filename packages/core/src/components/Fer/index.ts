@@ -6,10 +6,11 @@ import { FerIframe } from './Iframe';
 import { FerButton } from './Button';
 import { FerSelect } from './Select';
 import { FerInputNumber } from './InputNumber';
+import { FerSwitch } from './Switch';
 
 import { BasicCaption } from '@/components/Basic';
 
 const FerGroupTitle = BasicCaption;
 FerGroupTitle.name = 'FerGroupTitle';
 
-export { FerInput, FerTextarea, FerRadio, FerDivider, FerIframe, FerGroupTitle, FerButton, FerSelect, FerInputNumber };
+export { FerInput, FerTextarea, FerRadio, FerDivider, FerIframe, FerGroupTitle, FerButton, FerSelect, FerInputNumber, FerSwitch };

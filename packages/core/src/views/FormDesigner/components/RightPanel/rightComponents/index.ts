@@ -6,3 +6,4 @@ export { default as RGroupTitle } from './RGroupTitle.vue';
 export { default as RButton } from './RButton.vue';
 export { default as RSelect } from './RSelect.vue';
 export { default as RInputNumber } from './RInputNumber.vue';
+export { default as RSwitch } from './RSwitch.vue';
