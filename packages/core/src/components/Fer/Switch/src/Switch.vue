@@ -17,7 +17,6 @@
   const innerValue = ref<any>(undefined);
 
   const getBindValue = computed(() => {
-    console.log(attrs);
     return { ...unref(attrs), ...omit(props, ['value']) };
   });
 

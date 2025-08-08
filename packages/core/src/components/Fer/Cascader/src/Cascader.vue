@@ -33,5 +33,4 @@
     };
   });
   const getBindValue = computed(() => ({ ...unref(attrs), fieldNames: unref(getFieldNames), showCheckedStrategy: 'SHOW_CHILD' }));
-  console.log(getBindValue, 'll');
 </script>
