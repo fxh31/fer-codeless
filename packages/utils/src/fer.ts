@@ -113,3 +113,25 @@ export function getDateFormat(format) {
   };
   return formatObj[format] || 'YYYY-MM-DD HH:mm:ss';
 }
+
+/**
+ * 文件相关处理函数
+ */
+// 数字 -> 十进制
+export function toDecimal(num: number = 0) {
+  const sign = num == (num = Math.abs(num));
+  num = Math.floor(num * 100 + 0.50000000001);
+  const cents = num % 100;
+  let value: string = Math.floor(num / 100).toString();
+  const centsStr: string = cents < 10 ? '0' + cents : cents.toString();
+  for (let i = 0; i < Math.floor((value.length - (1 + i)) / 3); i++)
+    value = value.substring(0, value.length - (4 * i + 3)) + '' + value.substring(value.length - (4 * i + 3));
+  return (sign ? '' : '-') + value + '.' + centsStr;
+}
+export function toFileSize(size) {
+  if (size == null || size == '') return '';
+  if (size < 1024) return toDecimal(size) + ' 字节';
+  else if (size >= 1024 && size < 1048576) return toDecimal(size / 1024) + ' KB';
+  else if (size >= 1048576 && size < 1073741824) return toDecimal(size / 1024 / 1024) + ' MB';
+  else if (size >= 1073741824) return toDecimal(size / 1024 / 1024 / 1024) + ' GB';
+}

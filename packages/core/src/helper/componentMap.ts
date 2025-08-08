@@ -374,6 +374,36 @@ export const inputComponents: GenItem[] = [
   },
   {
     __config__: {
+      ferKey: 'uploadFile',
+      label: '文件上传',
+      tag: 'FerUploadFile',
+      tipLabel: '',
+      labelWidth: undefined,
+      showLabel: true,
+      layout: 'colFormItem',
+      dragDisabled: false,
+      span: 24,
+      defaultValue: undefined,
+      noShow: false, // 是否隐藏
+    },
+    style: { width: '100%' },
+    on: {
+      change: '({ data }) => {\n    // 在此编写代码\n    \n}',
+    },
+    disabled: false,
+    accept: '', // 文件类型
+    fileSize: 10, // 文件大小
+    sizeUnit: 'MB', // 文件大小单位
+    buttonText: '点击上传', // 按钮文字
+    limit: 9, // 最大上传数
+    pathType: 'defaultPath', // 上传路径
+    sortRule: [], // 排序规则
+    timeFormat: 'YYYY', // 时间格式
+    folder: '', // 文件夹名
+    tipText: '', // 上传提示
+  },
+  {
+    __config__: {
       ferKey: 'button',
       label: '按钮',
       tag: 'FerButton',

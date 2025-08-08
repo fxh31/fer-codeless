@@ -33,3 +33,18 @@ export function deepMerge<T extends object | null | undefined, U extends object 
     }
   });
 }
+
+/**
+ * 安全打开新窗口或标签页
+ * noopener：防止页面通过 window.opener 访问原页面（避免恶意篡改原网站；新页面运行在独立进程）
+ * noreferrer：不向新页面发送 referrer 信息（保护隐私，防止目标网站知道用户来自哪个网站）
+ */
+export function openWindow(url: string, opt?: { target?: TargetContext | string; noopener?: boolean; noreferrer?: boolean }) {
+  const { target = '_blank', noopener = true, noreferrer = true } = opt || {};
+  const feature: string[] = [];
+
+  noopener && feature.push('noopener=yes');
+  noreferrer && feature.push('noreferrer=yes');
+
+  window.open(url, target, feature.join(','));
+}

@@ -12,6 +12,7 @@ import { FerSwitch } from './Switch';
 import { FerCheckbox } from './Checkbox';
 import { FerCascader } from './Cascader';
 import { FerDatePicker, FerTimePicker } from './DatePicker';
+import { FerUploadFile } from './Upload';
 
 import { BasicCaption } from '@/components/Basic';
 
@@ -33,4 +34,5 @@ export {
   FerCascader,
   FerDatePicker,
   FerTimePicker,
+  FerUploadFile,
 };

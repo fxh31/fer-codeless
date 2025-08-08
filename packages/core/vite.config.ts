@@ -19,6 +19,7 @@ export default defineConfig({
         javascriptEnabled: true,
         modifyVars: {
           hack: `true; @import (reference) "${resolve('src/design/config.less')}";`,
+          'selected-hover-bg': '#f5f5f5',
         },
       },
     },

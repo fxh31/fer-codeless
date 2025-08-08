@@ -8,3 +8,5 @@ export * from './src/helper/tsxHelper';
 export * from './src/env';
 export * from './src/log';
 export * from './src/fer';
+
+export * from './src/file/download';
