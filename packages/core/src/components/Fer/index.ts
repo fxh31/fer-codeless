@@ -13,6 +13,7 @@ import { FerCheckbox } from './Checkbox';
 import { FerCascader } from './Cascader';
 import { FerDatePicker, FerTimePicker } from './DatePicker';
 import { FerUploadFile } from './Upload';
+import { FerRate } from './Rate';
 
 import { BasicCaption } from '@/components/Basic';
 
@@ -35,4 +36,5 @@ export {
   FerDatePicker,
   FerTimePicker,
   FerUploadFile,
+  FerRate,
 };

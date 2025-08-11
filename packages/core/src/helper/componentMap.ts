@@ -50,7 +50,7 @@ export const formConf = {
 };
 
 // 左面板 - 基础组件
-export const inputComponents: GenItem[] = [
+export const basicComponents: GenItem[] = [
   {
     __config__: {
       ferKey: 'input',
@@ -401,6 +401,28 @@ export const inputComponents: GenItem[] = [
     timeFormat: 'YYYY', // 时间格式
     folder: '', // 文件夹名
     tipText: '', // 上传提示
+  },
+  {
+    __config__: {
+      ferKey: 'rate',
+      label: '评分',
+      tag: 'FerRate',
+      tipLabel: '',
+      labelWidth: undefined,
+      showLabel: true,
+      layout: 'colFormItem',
+      dragDisabled: false,
+      span: 24,
+      defaultValue: undefined,
+      noShow: false, // 是否隐藏
+    },
+    style: { width: '100%' },
+    on: {
+      change: '({ data }) => {\n    // 在此编写代码\n    \n}',
+    },
+    count: 5,
+    allowHalf: false,
+    disabled: false,
   },
   {
     __config__: {

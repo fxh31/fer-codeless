@@ -56,7 +56,7 @@
 <script lang="ts" setup>
   import { reactive, toRefs, computed, unref, useAttrs } from 'vue';
   import { upperFirst } from 'lodash-es';
-  import { inputComponents, layoutComponents, advanceComponents } from '@/helper/componentMap';
+  import { basicComponents, layoutComponents, advanceComponents } from '@/helper/componentMap';
   import { layoutList } from '@/helper/rightPanel';
   import { noVModelList } from '@/helper/config';
   import { ScrollContainer } from '@/components/Container';
@@ -79,7 +79,7 @@
   const getBindValue = computed(() => ({ ...props }));
   const ferKey = computed(() => unref(props.activeData).__config__?.ferKey);
   const getCompName = computed(() => {
-    const allComps = [...inputComponents, ...layoutComponents, ...advanceComponents];
+    const allComps = [...basicComponents, ...layoutComponents, ...advanceComponents];
     const comp = allComps.filter(o => o.__config__.ferKey === unref(ferKey));
     if (!comp.length) return '';
     return comp[0].__config__.label;
