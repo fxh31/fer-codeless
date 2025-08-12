@@ -14,3 +14,5 @@ export { default as RDatePicker } from './RDatePicker.vue';
 export { default as RTimePicker } from './RTimePicker.vue';
 export { default as RUploadFile } from './RUploadFile.vue';
 export { default as RRate } from './RRate.vue';
+export { default as RSlider } from './RSlider.vue';
+export { default as RLink } from './RLink.vue';

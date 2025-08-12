@@ -14,6 +14,8 @@ import { FerCascader } from './Cascader';
 import { FerDatePicker, FerTimePicker } from './DatePicker';
 import { FerUploadFile } from './Upload';
 import { FerRate } from './Rate';
+import { FerSlider } from './Slider';
+import { FerLink } from './Link';
 
 import { BasicCaption } from '@/components/Basic';
 
@@ -37,4 +39,6 @@ export {
   FerTimePicker,
   FerUploadFile,
   FerRate,
+  FerSlider,
+  FerLink,
 };

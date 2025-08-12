@@ -20,6 +20,8 @@ import {
   FerTimePicker,
   FerUploadFile,
   FerRate,
+  FerSlider,
+  FerLink,
 } from '@/components/Fer';
 
 const componentMap = new Map();
@@ -41,5 +43,7 @@ componentMap.set('DatePicker', FerDatePicker);
 componentMap.set('TimePicker', FerTimePicker);
 componentMap.set('UploadFile', FerUploadFile);
 componentMap.set('Rate', FerRate);
+componentMap.set('Slider', FerSlider);
+componentMap.set('Link', FerLink);
 
 export { componentMap };

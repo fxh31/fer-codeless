@@ -426,6 +426,53 @@ export const basicComponents: GenItem[] = [
   },
   {
     __config__: {
+      ferKey: 'slider',
+      label: '滑块',
+      tag: 'FerSlider',
+      tipLabel: '',
+      labelWidth: undefined,
+      showLabel: true,
+      layout: 'colFormItem',
+      dragDisabled: false,
+      span: 24,
+      defaultValue: undefined,
+      noShow: false, // 是否隐藏
+    },
+    style: { width: '100%' },
+    on: {
+      change: '({ data }) => {\n    // 在此编写代码\n    \n}',
+    },
+    disabled: false,
+    min: 0,
+    max: 100,
+    step: 1,
+  },
+  {
+    __config__: {
+      ferKey: 'link',
+      label: '链接',
+      tag: 'FerLink',
+      tipLabel: '',
+      labelWidth: undefined,
+      showLabel: true,
+      layout: 'colFormItem',
+      dragDisabled: false,
+      span: 24,
+      defaultValue: undefined,
+      noShow: false, // 是否隐藏
+    },
+    on: {
+      click: '({ data }) => {\n    // 在此编写代码\n    \n}',
+    },
+    content: '文本链接',
+    href: '',
+    target: '_self',
+    textStyle: {
+      'text-align': 'left',
+    },
+  },
+  {
+    __config__: {
       ferKey: 'button',
       label: '按钮',
       tag: 'FerButton',
