@@ -449,6 +449,30 @@ export const basicComponents: GenItem[] = [
   },
   {
     __config__: {
+      ferKey: 'button',
+      label: '按钮',
+      tag: 'FerButton',
+      tipLabel: '',
+      labelWidth: undefined,
+      showLabel: false, // 不显示 label
+      layout: 'colFormItem',
+      dragDisabled: false,
+      span: 24,
+      defaultValue: undefined,
+      noShow: false, // 是否隐藏
+    },
+    style: { width: '100%' },
+    placeholder: '请输入',
+    on: {
+      click: '({ data }) => {\n    // 在此编写代码\n    \n}',
+    },
+    align: 'left',
+    buttonText: '按钮',
+    type: 'default',
+    disabled: false,
+  },
+  {
+    __config__: {
       ferKey: 'link',
       label: '链接',
       tag: 'FerLink',
@@ -519,27 +543,24 @@ export const basicComponents: GenItem[] = [
   },
   {
     __config__: {
-      ferKey: 'button',
-      label: '按钮',
-      tag: 'FerButton',
+      ferKey: 'qrcode',
+      label: '二维码',
+      tag: 'FerQrcode',
       tipLabel: '',
       labelWidth: undefined,
-      showLabel: false, // 不显示 label
+      showLabel: true,
       layout: 'colFormItem',
       dragDisabled: false,
       span: 24,
       defaultValue: undefined,
       noShow: false, // 是否隐藏
     },
-    style: { width: '100%' },
-    placeholder: '请输入',
-    on: {
-      click: '({ data }) => {\n    // 在此编写代码\n    \n}',
-    },
-    align: 'left',
-    buttonText: '按钮',
-    type: 'default',
-    disabled: false,
+    colorDark: '#000',
+    colorLight: '#fff',
+    width: 100,
+    dataType: 'static',
+    staticText: '二维码',
+    relationField: '',
   },
 ];
 // 左面板 - 高级组件

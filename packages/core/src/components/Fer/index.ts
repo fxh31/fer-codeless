@@ -18,6 +18,7 @@ import { FerSlider } from './Slider';
 import { FerLink } from './Link';
 import { FerText } from './Text';
 import { FerAlert } from './Alert';
+import { FerQrcode } from './Qrcode';
 
 import { BasicCaption } from '@/components/Basic';
 
@@ -45,4 +46,5 @@ export {
   FerLink,
   FerText,
   FerAlert,
+  FerQrcode,
 };

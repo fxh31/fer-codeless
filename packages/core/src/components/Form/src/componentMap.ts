@@ -24,6 +24,7 @@ import {
   FerLink,
   FerText,
   FerAlert,
+  FerQrcode,
 } from '@/components/Fer';
 
 const componentMap = new Map();
@@ -49,5 +50,6 @@ componentMap.set('Slider', FerSlider);
 componentMap.set('Link', FerLink);
 componentMap.set('Text', FerText);
 componentMap.set('Alert', FerAlert);
+componentMap.set('Qrcode', FerQrcode);
 
 export { componentMap };
