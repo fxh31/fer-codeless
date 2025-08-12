@@ -54,6 +54,9 @@ importers:
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
+      lodash-es:
+        specifier: ^4.17.21
+        version: 4.17.21
       monaco-editor:
         specifier: ^0.52.2
         version: 0.52.2

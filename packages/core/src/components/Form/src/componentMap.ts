@@ -23,6 +23,7 @@ import {
   FerSlider,
   FerLink,
   FerText,
+  FerAlert,
 } from '@/components/Fer';
 
 const componentMap = new Map();
@@ -47,5 +48,6 @@ componentMap.set('Rate', FerRate);
 componentMap.set('Slider', FerSlider);
 componentMap.set('Link', FerLink);
 componentMap.set('Text', FerText);
+componentMap.set('Alert', FerAlert);
 
 export { componentMap };

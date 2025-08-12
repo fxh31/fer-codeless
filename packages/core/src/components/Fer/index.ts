@@ -17,6 +17,7 @@ import { FerRate } from './Rate';
 import { FerSlider } from './Slider';
 import { FerLink } from './Link';
 import { FerText } from './Text';
+import { FerAlert } from './Alert';
 
 import { BasicCaption } from '@/components/Basic';
 
@@ -43,4 +44,5 @@ export {
   FerSlider,
   FerLink,
   FerText,
+  FerAlert,
 };

@@ -498,6 +498,27 @@ export const basicComponents: GenItem[] = [
   },
   {
     __config__: {
+      ferKey: 'alert',
+      label: '提示',
+      tag: 'FerAlert',
+      tipLabel: '',
+      labelWidth: undefined,
+      showLabel: false,
+      layout: 'colFormItem',
+      dragDisabled: false,
+      span: 24,
+      defaultValue: undefined,
+      noShow: false, // 是否隐藏
+    },
+    title: '这是一个提示',
+    type: 'success',
+    showIcon: false,
+    closable: true,
+    description: '',
+    closeText: '',
+  },
+  {
+    __config__: {
       ferKey: 'button',
       label: '按钮',
       tag: 'FerButton',

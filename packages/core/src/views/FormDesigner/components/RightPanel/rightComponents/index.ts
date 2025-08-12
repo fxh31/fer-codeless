@@ -17,3 +17,4 @@ export { default as RRate } from './RRate.vue';
 export { default as RSlider } from './RSlider.vue';
 export { default as RLink } from './RLink.vue';
 export { default as RText } from './RText.vue';
+export { default as RAlert } from './RAlert.vue';
