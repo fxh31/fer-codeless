@@ -22,6 +22,7 @@ import {
   FerRate,
   FerSlider,
   FerLink,
+  FerText,
 } from '@/components/Fer';
 
 const componentMap = new Map();
@@ -45,5 +46,6 @@ componentMap.set('UploadFile', FerUploadFile);
 componentMap.set('Rate', FerRate);
 componentMap.set('Slider', FerSlider);
 componentMap.set('Link', FerLink);
+componentMap.set('Text', FerText);
 
 export { componentMap };

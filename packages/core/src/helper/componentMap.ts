@@ -473,6 +473,31 @@ export const basicComponents: GenItem[] = [
   },
   {
     __config__: {
+      ferKey: 'text',
+      label: '文字',
+      tag: 'FerText',
+      tipLabel: '',
+      labelWidth: undefined,
+      showLabel: false,
+      layout: 'colFormItem',
+      dragDisabled: false,
+      span: 24,
+      defaultValue: undefined,
+      noShow: false, // 是否隐藏
+    },
+    textStyle: {
+      color: '#000000',
+      'text-align': 'left',
+      'font-weight': 'normal',
+      'font-style': 'normal',
+      'text-decoration': 'none',
+      'line-height': 32,
+      'font-size': 12,
+    },
+    content: '这是一段文字',
+  },
+  {
+    __config__: {
       ferKey: 'button',
       label: '按钮',
       tag: 'FerButton',

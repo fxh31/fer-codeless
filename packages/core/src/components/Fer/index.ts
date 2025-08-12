@@ -16,6 +16,7 @@ import { FerUploadFile } from './Upload';
 import { FerRate } from './Rate';
 import { FerSlider } from './Slider';
 import { FerLink } from './Link';
+import { FerText } from './Text';
 
 import { BasicCaption } from '@/components/Basic';
 
@@ -41,4 +42,5 @@ export {
   FerRate,
   FerSlider,
   FerLink,
+  FerText,
 };
