@@ -20,6 +20,7 @@
             <template #item="{ element }">
               <div class="components-item" :class="{ disabled: element.__config__.dragDisabled }" @click="addComponent(element)">
                 <div class="components-body">
+                  <component :is="iconMap[element.__config__.tag]"></component>
                   {{ element.__config__.label }}
                 </div>
               </div>
@@ -113,6 +114,7 @@
   import { useDesign } from '@/hooks/web/useDesign';
 
   import { basicComponents, advanceComponents, systemComponents, layoutComponents, formConf as defaultFormConf } from '../../helper/componentMap';
+  import { iconMap } from '@/helper/iconMap';
 
   interface State {
     leftComponents: any[];
@@ -135,7 +137,7 @@
     leftComponents: [
       { id: '1', title: '基础组件', list: basicComponents },
       { id: '2', title: '高级组件', list: advanceComponents },
-      { id: '3', title: '系统组件', list: systemComponents },
+      // { id: '3', title: '系统组件', list: systemComponents },
       { id: '4', title: '布局组件', list: layoutComponents },
     ],
     leftActiveKey: ['1', '2', '3', '4'],
