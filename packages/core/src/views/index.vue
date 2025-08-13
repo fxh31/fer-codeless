@@ -1,7 +1,6 @@
 <template>
   <div class="de-container">
-    <FormDesigner v-bind="getFormDesignerBind" />
-    <Foo :name="foo" tvalue="jj" />
+    <FormDesigner v-bind="getFormDesignerBind" style="flex: 1" />
   </div>
 </template>
 <script lang="ts" setup>
@@ -20,5 +19,6 @@
   .de-container {
     display: flex;
     height: 100%;
+    flex-direction: column;
   }
 </style>

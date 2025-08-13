@@ -4,30 +4,31 @@
       <a-tabs v-model:activeKey="leftTabActiveKey" :tabBarGutter="10" class="average-tabs">
         <a-tab-pane key="1" tab="组件" />
       </a-tabs>
-
-      <a-collapse v-model:activeKey="leftActiveKey" expandIconPosition="end" ghost v-show="leftTabActiveKey === '1'">
-        <a-collapse-panel :header="item.title" :key="item.id" v-for="item in leftComponents" class="components-list">
-          <draggable
-            class="components-draggable"
-            v-model="item.list"
-            item-key="__config__.ferKey"
-            filter=".disabled"
-            :sort="false"
-            draggable=".components-item"
-            :clone="cloneComponent"
-            :group="{ name: 'componentsGroup', pull: 'clone', put: false }"
-            @end="onLeftEnd">
-            <template #item="{ element }">
-              <div class="components-item" :class="{ disabled: element.__config__.dragDisabled }" @click="addComponent(element)">
-                <div class="components-body">
-                  <component :is="iconMap[element.__config__.tag]"></component>
-                  {{ element.__config__.label }}
+      <ScrollContainer>
+        <a-collapse v-model:activeKey="leftActiveKey" expandIconPosition="end" ghost v-show="leftTabActiveKey === '1'">
+          <a-collapse-panel :header="item.title" :key="item.id" v-for="item in leftComponents" class="components-list">
+            <draggable
+              class="components-draggable"
+              v-model="item.list"
+              item-key="__config__.ferKey"
+              filter=".disabled"
+              :sort="false"
+              draggable=".components-item"
+              :clone="cloneComponent"
+              :group="{ name: 'componentsGroup', pull: 'clone', put: false }"
+              @end="onLeftEnd">
+              <template #item="{ element }">
+                <div class="components-item" :class="{ disabled: element.__config__.dragDisabled }" @click="addComponent(element)">
+                  <div class="components-body">
+                    <component :is="iconMap[element.__config__.tag]"></component>
+                    {{ element.__config__.label }}
+                  </div>
                 </div>
-              </div>
-            </template>
-          </draggable>
-        </a-collapse-panel>
-      </a-collapse>
+              </template>
+            </draggable>
+          </a-collapse-panel>
+        </a-collapse>
+      </ScrollContainer>
     </div>
     <div class="center-board common-board">
       <div class="action-bar">
