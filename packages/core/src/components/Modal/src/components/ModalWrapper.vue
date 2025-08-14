@@ -117,7 +117,7 @@
           if (!modalDom) return;
 
           const modalRect = getComputedStyle(modalDom as Element).top;
-          const modalTop = Number.parseInt(modalRect);
+          const modalTop = Number.parseInt(modalRect) || 0;
           let maxHeight = window.innerHeight - modalTop * 2 + (props.footerOffset! || 0) - props.modalFooterHeight - props.modalHeaderHeight;
 
           // 距离顶部过进会出现滚动条
@@ -132,7 +132,6 @@
           // if (!realHeight) {
           realHeight = spinEl.scrollHeight;
           // }
-
           if (props.fullScreen) {
             realHeightRef.value = window.innerHeight - props.modalFooterHeight - props.modalHeaderHeight - 28;
           } else {
