@@ -55,6 +55,7 @@
 </template>
 <script lang="ts" setup>
   import { computed, unref } from 'vue';
+  import { BasicHelp } from '@/components/Basic';
 
   defineOptions({ inheritAttrs: false });
   const props = defineProps(['activeData', 'drawingList']);
