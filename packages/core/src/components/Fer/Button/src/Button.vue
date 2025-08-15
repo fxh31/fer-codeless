@@ -19,8 +19,7 @@
 <style lang="less" scoped>
   @prefix-cls: ~'@{namespace}-button';
   .@{prefix-cls} {
-    // width: 100%;
-    width: 100px;
+    width: 100%;
     &&-left {
       text-align: left;
     }

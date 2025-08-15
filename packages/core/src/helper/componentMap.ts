@@ -461,8 +461,6 @@ export const basicComponents: GenItem[] = [
       defaultValue: undefined,
       noShow: false, // 是否隐藏
     },
-    style: { width: '100%' },
-    placeholder: '请输入',
     on: {
       click: '({ data }) => {\n    // 在此编写代码\n    \n}',
     },
