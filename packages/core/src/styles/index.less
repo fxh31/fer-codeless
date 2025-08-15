@@ -6,7 +6,8 @@
   height: 100%;
   display: flex;
   .common-board {
-    height: calc(100vh - 42px);
+    // height: calc(100vh - 42px);
+    height: 100%;
     border-radius: 8px;
     overflow: hidden;
   }
@@ -16,6 +17,18 @@
     background-color: @component-background;
     display: flex;
     flex-direction: column;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 1px;
+      background-color: @border-color-base;
+    }
+
     .ant-collapse-header {
       .ant-collapse-header-text {
         font-weight: 600;
@@ -98,12 +111,12 @@
   }
   .center-board {
     flex: 1;
-    margin: 0 10px;
+    // margin: 0 10px;
     background-color: @component-background;
     box-sizing: border-box;
   }
   .center-board-main {
-    height: calc(100% - 46px);
+    height: calc(100% - 54px);
     overflow: hidden;
     box-sizing: border-box;
     .scrollbar__view {

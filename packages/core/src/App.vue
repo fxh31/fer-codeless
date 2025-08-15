@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <DesignCom />
-  </div>
+  <DesignCom />
 </template>
 <script lang="ts" setup>
   import { defineAsyncComponent } from 'vue';
