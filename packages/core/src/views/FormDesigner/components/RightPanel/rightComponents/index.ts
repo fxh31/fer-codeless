@@ -20,3 +20,4 @@ export { default as RText } from './RText.vue';
 export { default as RAlert } from './RAlert.vue';
 export { default as RQrcode } from './RQrcode.vue';
 export { default as RCollapse } from './RCollapse.vue';
+export { default as RRow } from './RRow.vue';

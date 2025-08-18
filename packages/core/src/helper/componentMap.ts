@@ -665,4 +665,21 @@ export const layoutComponents = [
     ghost: true,
     expandIconPosition: 'end',
   },
+  {
+    __config__: {
+      ferKey: 'row',
+      label: '栅格容器',
+      labelWidth: undefined,
+      showLabel: false,
+      tag: 'ARow',
+      className: [],
+      layout: 'rowFormItem',
+      span: 24,
+      dragDisabled: false,
+      noShow: false,
+    },
+    type: 'default',
+    justify: 'start', // 水平排列方式
+    align: 'top', // 垂直对齐方式
+  },
 ];

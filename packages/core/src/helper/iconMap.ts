@@ -20,6 +20,7 @@ import {
   ColumnHeightOutlined,
   DownOutlined,
   CreditCardOutlined,
+  LayoutOutlined,
 } from '@ant-design/icons-vue';
 
 export const iconMap = {
@@ -45,4 +46,5 @@ export const iconMap = {
   FerIframe: CodeOutlined,
   FerGroupTitle: ColumnHeightOutlined,
   ACollapse: CreditCardOutlined,
+  ARow: LayoutOutlined,
 };

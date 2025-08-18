@@ -175,6 +175,12 @@
 
     if (config.layout === 'colFormItem') {
       item.__vModel__ = `${config.ferKey}Field${uuid}`;
+    } else if (config.layout === 'rowFormItem') {
+      config.componentName = `${config.ferKey}${uuid}`;
+      !Array.isArray(config.children) && (config.children = []);
+    }
+    if (Array.isArray(config.children)) {
+      config.children = config.children.map(childItem => createIdAndKey(childItem, item));
     }
 
     return item;

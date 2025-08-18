@@ -11,7 +11,7 @@
           <a-form-item label="组件类型">
             <a-input v-model:value="getCompName" disabled />
           </a-form-item>
-          <div v-if="!noVModelList.includes(ferKey)">
+          <div v-if="activeData.__vModel__ !== undefined && !noVModelList.includes(ferKey)">
             <a-form-item>
               <template #label>组件字段<BasicHelp text="表单里对应组件的字段名称" /> </template>
               <a-input v-model:value="activeData.__vModel__" placeholder="请输入" />

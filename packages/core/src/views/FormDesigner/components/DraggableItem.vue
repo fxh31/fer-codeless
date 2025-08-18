@@ -195,6 +195,50 @@
               </a-col>
             );
           }
+
+          const group = { name: 'componentsGroup', put: (...arg) => put(...arg, element) };
+          const onEnd = (...arg) => end(...arg, activeData, element);
+          const slots = {
+            item: ({ element: childElement, index }) => {
+              return renderChildren(childElement, index, config.children);
+            },
+          };
+
+          let tip: JSX.Element | Element | null = null;
+          if (!config.children.length) {
+            tip = <div class="row-tip">请将组件拖到此区域(可拖多个组件)</div>;
+          }
+          if (config.ferKey === 'row') {
+            return (
+              <a-col
+                span={config.span}
+                data-draggable={true}
+                draggable={false}
+                onClick={event => {
+                  onActiveItem(element);
+                  event.stopPropagation();
+                }}>
+                <a-row class={className + ' drawing-row-item-row'}>
+                  <span class="component-name">{config.componentName}</span>
+                  <a-col>
+                    <a-row gutter={props.formConf.gutter || 15} class="child-drawing-row">
+                      {tip}
+                      <draggable
+                        v-model={config.children}
+                        v-slots={slots}
+                        item-key="renderKey"
+                        animation={300}
+                        group={group}
+                        onEnd={onEnd}
+                        class="drag-wrapper"
+                        style="padding-top:30px"></draggable>
+                    </a-row>
+                  </a-col>
+                  {components.itemBtns(element, index, parent)}
+                </a-row>
+              </a-col>
+            );
+          }
         },
       };
 
