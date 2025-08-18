@@ -26,7 +26,8 @@
     props: ['element', 'index', 'drawingList', 'activeId', 'formConf', 'showType'],
     setup(props, { attrs }) {
       const { t } = useI18n();
-      const useCompList = ['groupTitle', 'button'];
+      let activeData = {};
+      const useCompList = ['groupTitle', 'button', 'text', 'link', 'alert', 'qrcode'];
 
       const components = {
         // 表单项按钮
@@ -141,7 +142,69 @@
             </a-col>
           );
         },
+        rowFormItem(element, index, parent) {
+          const { onActiveItem, put, end } = attrs as unknown as AttrsType;
+          const config = element.__config__;
+          const className = props.activeId === config.formId ? 'drawing-row-item active-from-item' : 'drawing-row-item';
+
+          if (config.ferKey === 'collapse') {
+            return (
+              <a-col
+                span={24}
+                data-draggable={true}
+                draggable={false}
+                onClick={event => {
+                  onActiveItem(element);
+                  event.stopPropagation();
+                }}>
+                <a-row class={className}>
+                  <a-collapse ghost={true} expandIconPosition="end" accordion={element.accordion} v-model:activeKey={config.active}>
+                    {config.children.map(item => {
+                      const group = { name: 'componentsGroup', put: (...arg) => put(...arg, item) };
+                      const onEnd = (...arg) => end(...arg, activeData, item);
+                      const slots = {
+                        item: ({ element: childElement, index }) => {
+                          return renderChildren(childElement, index, item.__config__.children);
+                        },
+                      };
+                      let tip: JSX.Element | Element | null = null;
+                      if (!item.__config__.children.length) {
+                        tip = <div class="row-tip">请将组件拖到此区域(可拖多个组件)</div>;
+                      }
+                      return (
+                        <a-collapse-panel key={item.name} header={item.title}>
+                          <a-col>
+                            {tip}
+                            <a-row gutter={props.formConf.gutter || 15}>
+                              <draggable
+                                v-model={item.__config__.children}
+                                v-slots={slots}
+                                item-key="renderKey"
+                                animation={300}
+                                group={group}
+                                onEnd={onEnd}
+                                class="drag-wrapper"></draggable>
+                            </a-row>
+                          </a-col>
+                        </a-collapse-panel>
+                      );
+                    })}
+                  </a-collapse>
+                  {components.itemBtns(element, index, parent)}
+                </a-row>
+              </a-col>
+            );
+          }
+        },
       };
+
+      function renderChildren(element, index, parent) {
+        const layout = layouts[element.__config__.layout];
+        if (layout) {
+          return layout(element, index, parent);
+        }
+        return null;
+      }
 
       return () => {
         const layout = layouts[props.element.__config__.layout];

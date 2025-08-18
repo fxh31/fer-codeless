@@ -221,13 +221,14 @@
         }
       }
       .drawing-row-item {
-        //   position: relative;
-        //   cursor: move;
-        //   box-sizing: border-box;
-        //   border: 1px dashed @border-color-base;
-        //   padding: 0 2px;
-        //   margin-bottom: 10px;
-        //   border-radius: 8px;
+        position: relative;
+        cursor: move;
+        box-sizing: border-box;
+        border: 1px dashed @border-color-base;
+        padding: 0 2px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+
         //   &.drawing-row-item-table-grid {
         //     padding-top: 10px;
         //     padding-bottom: 10px;
@@ -246,9 +247,9 @@
         //     margin-bottom: 0;
         //   }
         // }
-        //   .ant-collapse {
-        //     width: 100%;
-        //   }
+        .ant-collapse {
+          width: 100%;
+        }
         //   .child-drawing-row {
         //     position: relative;
         //   }
@@ -302,18 +303,18 @@
         //   .drawing-row-item {
         //     margin-bottom: 2px;
         //   }
-        //   .drag-wrapper {
-        //     width: 100%;
-        //     min-height: 80px;
-        //     display: flex;
-        //     flex-wrap: wrap;
-        //     align-content: flex-start;
-        //     &.tableGrid-app-wrapper {
-        //       .row-tip {
-        //         margin-top: 20px;
-        //       }
-        //     }
-        //   }
+        .drag-wrapper {
+          width: 100%;
+          min-height: 80px;
+          display: flex;
+          flex-wrap: wrap;
+          align-content: flex-start;
+          // &.tableGrid-app-wrapper {
+          //   .row-tip {
+          //     margin-top: 20px;
+          //   }
+          // }
+        }
         &.active-from-item {
           border: 1px solid @primary-color;
         }
@@ -433,14 +434,14 @@
           color: @primary-color;
         }
       }
-      // .row-tip {
-      //   width: 100%;
-      //   color: @text-color-secondary;
-      //   text-align: center;
-      //   position: absolute;
-      //   top: 30px;
-      //   font-size: 14px;
-      // }
+      .row-tip {
+        width: 100%;
+        color: @text-color-secondary;
+        text-align: center;
+        position: absolute;
+        top: 30px;
+        font-size: 14px;
+      }
       // .table-grid {
       //   width: 100%;
       //   text-align: center;

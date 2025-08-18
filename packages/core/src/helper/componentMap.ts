@@ -626,4 +626,43 @@ export const layoutComponents = [
     content: '我是分割线',
     contentPosition: 'center',
   },
+  {
+    __config__: {
+      ferKey: 'collapse',
+      label: '折叠面板',
+      labelWidth: undefined,
+      showLabel: false,
+      tag: 'ACollapse',
+      className: [],
+      layout: 'rowFormItem',
+      span: 24,
+      dragDisabled: false,
+      noShow: false,
+      children: [
+        {
+          title: '面板1',
+          name: '1',
+          __config__: {
+            ferKey: 'collapseItem',
+            children: [],
+          },
+        },
+        {
+          title: '面板2',
+          name: '2',
+          __config__: {
+            ferKey: 'collapseItem',
+            children: [],
+          },
+        },
+      ],
+      active: ['1'],
+    },
+    on: {
+      change: '({ data, rowIndex, formData, setFormData, setShowOrHide, setRequired, setDisabled, onlineUtils }) => {\n    // 在此编写代码\n    \n}',
+    },
+    accordion: false,
+    ghost: true,
+    expandIconPosition: 'end',
+  },
 ];

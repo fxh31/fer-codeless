@@ -19,3 +19,4 @@ export { default as RLink } from './RLink.vue';
 export { default as RText } from './RText.vue';
 export { default as RAlert } from './RAlert.vue';
 export { default as RQrcode } from './RQrcode.vue';
+export { default as RCollapse } from './RCollapse.vue';

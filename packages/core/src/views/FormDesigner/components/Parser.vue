@@ -76,6 +76,28 @@
             );
           }
         },
+        rowFormItem(element) {
+          const config = element.__config__;
+          const listeners = buildListeners(element);
+
+          if (config.ferKey === 'collapse') {
+            return (
+              <a-col span={config.span} class={props.formConf.formStyle ? '' : 'mb-20px'}>
+                <a-collapse ghost={true} expandIconPosition="end" accordion={element.accordion} v-model:activeKey={config.active} {...listeners}>
+                  {config.children.map(item => {
+                    const child = renderChildren(item);
+                    if (item.titleI18nCode) item.title = t(item.titleI18nCode, item.title);
+                    return (
+                      <a-collapse-panel key={item.name} header={item.title} forceRender>
+                        <a-row gutter={props.formConf.formStyle ? 0 : state.formConfCopy.gutter || 15}>{child}</a-row>
+                      </a-collapse-panel>
+                    );
+                  })}
+                </a-collapse>
+              </a-col>
+            );
+          }
+        },
       };
 
       // 设置表单唯一 name
@@ -142,6 +164,7 @@
           </a-row>
         );
       }
+      // 渲染表单项
       function renderFormItem(elementList) {
         return elementList.map(scheme => {
           const config = scheme.__config__;
@@ -149,6 +172,12 @@
           if (layout) return layout(scheme);
           return null;
         });
+      }
+      // 渲染组件内部的子组件
+      function renderChildren(scheme) {
+        const config = scheme.__config__;
+        if (!Array.isArray(config.children)) return null;
+        return renderFormItem(config.children);
       }
 
       return () => {

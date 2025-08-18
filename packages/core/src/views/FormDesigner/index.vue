@@ -81,7 +81,9 @@
                     :form-conf="formConf"
                     @activeItem="activeFormItem"
                     @copyItem="drawingItemCopy"
-                    @deleteItem="drawingItemDelete" />
+                    @deleteItem="drawingItemDelete"
+                    :put="shouldClone"
+                    :end="onTableEnd" />
                 </template>
               </draggable>
               <div v-show="!drawingList.length" class="empty-info">
@@ -213,6 +215,8 @@
   function onCenterEnd() {
     console.log('中间拖拽结束');
   }
+  //
+  function onTableEnd(obj) {}
   // 组装表单属性和表单项
   function assembleFormData() {
     state.formConf = {
@@ -272,5 +276,9 @@
     };
 
     loop(state.drawingList);
+  }
+  // 是否复制
+  function shouldClone() {
+    return true;
   }
 </script>

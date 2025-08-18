@@ -19,6 +19,7 @@ import {
   ClockCircleOutlined,
   ColumnHeightOutlined,
   DownOutlined,
+  CreditCardOutlined,
 } from '@ant-design/icons-vue';
 
 export const iconMap = {
@@ -43,4 +44,5 @@ export const iconMap = {
   FerSlider: BorderOutlined,
   FerIframe: CodeOutlined,
   FerGroupTitle: ColumnHeightOutlined,
+  ACollapse: CreditCardOutlined,
 };
