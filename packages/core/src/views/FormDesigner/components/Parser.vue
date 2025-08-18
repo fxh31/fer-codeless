@@ -97,6 +97,15 @@
               </a-col>
             );
           }
+
+          const child = renderChildren(element);
+          if (config.ferKey === 'row') {
+            return (
+              <a-col span={config.span}>
+                <a-row gutter={props.formConf.formStyle ? 0 : state.formConfCopy.gutter || 15}>{child}</a-row>
+              </a-col>
+            );
+          }
         },
       };
 
