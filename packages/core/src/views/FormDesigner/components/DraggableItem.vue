@@ -75,6 +75,8 @@
                 <a-popconfirm
                   title={t('formGenerator.delComponentTip')}
                   class="drawing-item-action-item drawing-item-delete"
+                  cancelText={t('common.cancelText')}
+                  okText={t('common.okText')}
                   onConfirm={_ => {
                     onDeleteItem(index, parent);
                   }}>

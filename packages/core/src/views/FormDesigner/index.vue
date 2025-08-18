@@ -241,6 +241,8 @@
       iconType: 'warning',
       title: t('common.tipTitle'),
       content: t('formGenerator.cleanComponentTip'),
+      cancelText: t('common.cancelText'),
+      okText: t('common.okText'),
       onOk: () => {
         state.drawingList = [];
         addLocalRecord(state.drawingList);
