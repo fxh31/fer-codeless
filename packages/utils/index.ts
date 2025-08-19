@@ -10,3 +10,4 @@ export * from './src/log';
 export * from './src/fer';
 
 export * from './src/file/download';
+export * from './src/bem';
