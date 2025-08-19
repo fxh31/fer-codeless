@@ -560,9 +560,6 @@ export const basicComponents: GenItem[] = [
     staticText: '二维码',
     relationField: '',
   },
-];
-// 左面板 - 高级组件
-export const advanceComponents = [
   {
     __config__: {
       ferKey: 'iframe',
@@ -585,6 +582,8 @@ export const advanceComponents = [
     borderWidth: 1,
   },
 ];
+// 左面板 - 高级组件
+export const advanceComponents = [];
 // 左面板 - 系统组件
 export const systemComponents = [];
 // 左面板 - 布局组件

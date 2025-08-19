@@ -139,7 +139,7 @@
   const state = reactive<State>({
     leftComponents: [
       { id: '1', title: '基础组件', list: basicComponents },
-      { id: '2', title: '高级组件', list: advanceComponents },
+      // { id: '2', title: '高级组件', list: advanceComponents },
       // { id: '3', title: '系统组件', list: systemComponents },
       { id: '4', title: '布局组件', list: layoutComponents },
     ],
