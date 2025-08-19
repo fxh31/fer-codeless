@@ -115,10 +115,36 @@
           }
 
           const child = renderChildren(element);
+
           if (config.ferKey === 'row') {
             return (
               <a-col span={config.span}>
                 <a-row gutter={props.formConf.formStyle ? 0 : state.formConfCopy.gutter || 15}>{child}</a-row>
+              </a-col>
+            );
+          }
+
+          if (config.ferKey === 'card') {
+            let basicHelp: any = null;
+            const header = element.header;
+            const tipLabel = config.tipLabelI18nCode ? t(config.tipLabelI18nCode, config.tipLabel) : config.tipLabel;
+            if (tipLabel) basicHelp = <BasicHelp text={tipLabel} />;
+            const cardSlots = {
+              title: () => {
+                if (!header) return null;
+                return (
+                  <span>
+                    {header}
+                    {basicHelp}
+                  </span>
+                );
+              },
+            };
+            return (
+              <a-col span={config.span}>
+                <a-card style={{ marginBottom: '20px' }} v-slots={cardSlots} size={props.formConf.size} hoverable={element.shadow === 'hover'}>
+                  <a-row gutter={props.formConf.formStyle ? 0 : state.formConfCopy.gutter || 15}>{child}</a-row>
+                </a-card>
               </a-col>
             );
           }

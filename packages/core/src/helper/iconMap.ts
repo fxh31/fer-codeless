@@ -49,4 +49,5 @@ export const iconMap = {
   ACollapse: CreditCardOutlined,
   ARow: LayoutOutlined,
   ATab: TagOutlined,
+  ACard: CreditCardOutlined,
 };

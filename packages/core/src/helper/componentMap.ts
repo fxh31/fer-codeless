@@ -719,4 +719,23 @@ export const layoutComponents = [
     type: '',
     tabPosition: 'top',
   },
+  {
+    __config__: {
+      ferKey: 'card',
+      label: '卡片容器',
+      tipLabel: '',
+      labelWidth: undefined,
+      showLabel: false,
+      tag: 'ACard',
+      className: [],
+      defaultValue: [],
+      layout: 'rowFormItem',
+      span: 24,
+      dragDisabled: false,
+      noShow: false,
+      children: [],
+    },
+    header: '卡片容器',
+    shadow: 'never',
+  },
 ];

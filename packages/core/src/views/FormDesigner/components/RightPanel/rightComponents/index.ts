@@ -22,3 +22,4 @@ export { default as RQrcode } from './RQrcode.vue';
 export { default as RCollapse } from './RCollapse.vue';
 export { default as RRow } from './RRow.vue';
 export { default as RTab } from './RTab.vue';
+export { default as RCard } from './RCard.vue';

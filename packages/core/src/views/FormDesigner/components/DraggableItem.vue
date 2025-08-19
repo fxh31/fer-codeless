@@ -295,6 +295,51 @@
               </a-col>
             );
           }
+
+          if (config.ferKey === 'card') {
+            let basicHelp: any = null;
+            if (config.tipLabel) basicHelp = <BasicHelp text={config.tipLabel} />;
+            const cardSlots = {
+              title: () => {
+                if (!element.header) return null;
+                return (
+                  <span>
+                    {element.header}
+                    {basicHelp}
+                  </span>
+                );
+              },
+            };
+            return (
+              <a-col
+                span={config.span}
+                data-draggable={true}
+                draggable={false}
+                onClick={event => {
+                  onActiveItem(element);
+                  event.stopPropagation();
+                }}>
+                <a-row class={className}>
+                  <a-card v-slots={cardSlots} size={props.formConf.size} hoverable={element.shadow === 'hover'}>
+                    <a-col>
+                      <a-row gutter={props.formConf.gutter || 15} class="child-drawing-row">
+                        {tip}
+                        <draggable
+                          v-model={config.children}
+                          v-slots={slots}
+                          item-key="renderKey"
+                          animation={300}
+                          group={group}
+                          onEnd={onEnd}
+                          class="drag-wrapper"></draggable>
+                      </a-row>
+                    </a-col>
+                  </a-card>
+                  {components.itemBtns(element, index, parent)}
+                </a-row>
+              </a-col>
+            );
+          }
         },
       };
 

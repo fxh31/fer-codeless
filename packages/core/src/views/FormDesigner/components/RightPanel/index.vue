@@ -133,6 +133,6 @@
    * 控制标题提示配置
    */
   function hasTipLabel(ferKey) {
-    return ![...layoutList].includes(ferKey);
+    return ![...layoutList].includes(ferKey) || ['card'].includes(ferKey);
   }
 </script>
