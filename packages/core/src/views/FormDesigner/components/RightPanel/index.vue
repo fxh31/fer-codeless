@@ -111,6 +111,9 @@
       case 'click':
         text = '点击时触发';
         break;
+      case 'tabClick':
+        text = '面板点击时触发';
+        break;
       default:
         text = '';
         break;

@@ -10,7 +10,7 @@ export const formConf = {
   labelSuffix: '', // 标题后缀
   // formRules: 'rules',
   // popupType: 'general',
-  // generalWidth: '600px',
+  generalWidth: '600px',
   fullScreenWidth: '100%',
   // drawerWidth: '600px',
   gutter: 15,
@@ -679,7 +679,45 @@ export const layoutComponents = [
       noShow: false,
     },
     type: 'default',
-    justify: 'start', // 水平排列方式
-    align: 'top', // 垂直对齐方式
+    justify: 'start', // 水平排列方式（todo）
+    align: 'top', // 垂直对齐方式（todo）
+  },
+  {
+    __config__: {
+      ferKey: 'tab',
+      label: '标签面板',
+      labelWidth: undefined,
+      showLabel: false,
+      tag: 'ATab',
+      className: [],
+      layout: 'rowFormItem',
+      span: 24,
+      dragDisabled: false,
+      noShow: false,
+      children: [
+        {
+          title: 'Tab 1',
+          name: '1',
+          __config__: {
+            ferKey: 'tabItem',
+            children: [],
+          },
+        },
+        {
+          title: 'Tab 2',
+          name: '2',
+          __config__: {
+            ferKey: 'tabItem',
+            children: [],
+          },
+        },
+      ],
+      active: '1',
+    },
+    on: {
+      tabClick: '({ data }) => {\n    // 在此编写代码\n    \n}',
+    },
+    type: '',
+    tabPosition: 'top',
   },
 ];

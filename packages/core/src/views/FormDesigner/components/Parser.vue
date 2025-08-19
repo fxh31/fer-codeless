@@ -86,7 +86,6 @@
                 <a-collapse ghost={true} expandIconPosition="end" accordion={element.accordion} v-model:activeKey={config.active} {...listeners}>
                   {config.children.map(item => {
                     const child = renderChildren(item);
-                    if (item.titleI18nCode) item.title = t(item.titleI18nCode, item.title);
                     return (
                       <a-collapse-panel key={item.name} header={item.title} forceRender>
                         <a-row gutter={props.formConf.formStyle ? 0 : state.formConfCopy.gutter || 15}>{child}</a-row>
@@ -94,6 +93,23 @@
                     );
                   })}
                 </a-collapse>
+              </a-col>
+            );
+          }
+
+          if (config.ferKey === 'tab') {
+            return (
+              <a-col span={config.span} class={props.formConf.formStyle} style={{ marginBottom: '10px' }}>
+                <a-tabs type={element.type} size={props.formConf.size} tabPosition={element.tabPosition} v-model:activeKey={config.active} {...listeners}>
+                  {config.children.map(item => {
+                    const child = renderChildren(item);
+                    return (
+                      <a-tab-pane forceRender key={item.name} tab={item.title}>
+                        <a-row gutter={props.formConf.formStyle ? 0 : state.formConfCopy.gutter || 15}>{child}</a-row>
+                      </a-tab-pane>
+                    );
+                  })}
+                </a-tabs>
               </a-col>
             );
           }

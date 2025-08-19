@@ -198,6 +198,60 @@
             );
           }
 
+          if (config.ferKey === 'tab') {
+            return (
+              <a-col
+                span={config.span}
+                data-draggable={true}
+                draggable={false}
+                onClick={event => {
+                  onActiveItem(element);
+                  event.stopPropagation();
+                }}>
+                <a-row class={className}>
+                  <a-tabs
+                    type={element.type}
+                    size={props.formConf.size}
+                    tabPosition={props.showType === 'app' ? 'top' : element.tabPosition}
+                    v-model:activeKey={config.active}>
+                    {config.children.map(item => {
+                      const group = { name: 'componentsGroup', put: (...arg) => put(...arg, item) };
+                      const onEnd = (...arg) => end(...arg, activeData, item);
+                      const slots = {
+                        item: ({ element: childElement, index }) => {
+                          return renderChildren(childElement, index, item.__config__.children);
+                        },
+                      };
+                      let tip: JSX.Element | Element | null = null;
+                      if (!item.__config__.children.length) {
+                        tip = <div class="row-tip">请将组件拖到此区域(可拖多个组件)</div>;
+                      }
+                      return (
+                        <a-tab-pane key={item.name} tab={item.title}>
+                          <a-col>
+                            {tip}
+                            <a-row gutter={props.formConf.gutter || 15}>
+                              <draggable
+                                v-model={item.__config__.children}
+                                v-slots={slots}
+                                item-key="renderKey"
+                                animation={300}
+                                group={group}
+                                onEnd={onEnd}
+                                class="drag-wrapper"
+                                style="padding-top:12px"></draggable>
+                            </a-row>
+                          </a-col>
+                        </a-tab-pane>
+                      );
+                    })}
+                  </a-tabs>
+                  {components.itemBtns(element, index, parent)}
+                </a-row>
+              </a-col>
+            );
+          }
+
           const group = { name: 'componentsGroup', put: (...arg) => put(...arg, element) };
           const onEnd = (...arg) => end(...arg, activeData, element);
           const slots = {

@@ -21,6 +21,7 @@ import {
   DownOutlined,
   CreditCardOutlined,
   LayoutOutlined,
+  TagOutlined,
 } from '@ant-design/icons-vue';
 
 export const iconMap = {
@@ -47,4 +48,5 @@ export const iconMap = {
   FerGroupTitle: ColumnHeightOutlined,
   ACollapse: CreditCardOutlined,
   ARow: LayoutOutlined,
+  ATab: TagOutlined,
 };
