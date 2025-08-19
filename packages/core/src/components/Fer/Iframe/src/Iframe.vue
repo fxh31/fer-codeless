@@ -31,6 +31,7 @@
   @prefix-cls: ~'@{namespace}-iframe';
 
   .@{prefix-cls} {
+    padding: 0 1px;
     .iframe {
       width: 100%;
       height: var(--height);
