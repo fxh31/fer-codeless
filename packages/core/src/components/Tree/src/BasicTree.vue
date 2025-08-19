@@ -403,7 +403,6 @@
       return () => {
         const { title, helpMessage, toolbar, search, checkable } = props;
         const showTitle = title || toolbar || search || slots.headerTitle;
-        console.log(showTitle);
         const scrollStyle: CSSProperties = { height: '100%' };
         return (
           <div class={[bem(), 'h-full', attrs.class]}>
