@@ -168,10 +168,6 @@
         border-radius: 24px;
         font-size: 12px;
 
-        &-container {
-          display: flex;
-        }
-
         .drawing-item-action-item {
         }
       }
@@ -229,10 +225,10 @@
         margin-bottom: 10px;
         border-radius: 8px;
 
-        //   &.drawing-row-item-table-grid {
-        //     padding-top: 10px;
-        //     padding-bottom: 10px;
-        //   }
+        &.drawing-row-item-table-grid {
+          padding-top: 25px;
+          padding-bottom: 10px;
+        }
         .ant-card {
           width: 100%;
           .ant-card-body {
@@ -395,28 +391,28 @@
         //     }
         //   }
 
-        //   & > .drawing-item-cell {
-        //     display: none;
-        //     position: absolute;
-        //     bottom: 0;
-        //     right: 0;
-        //     width: 22px;
-        //     height: 22px;
-        //     line-height: 22px;
-        //     text-align: center;
-        //     font-size: 12px;
-        //     cursor: pointer;
-        //     z-index: 1;
-        //     color: @component-background;
-        //     background-color: @primary-color;
-        //     i {
-        //       color: #fff;
-        //     }
-        //     .anticon {
-        //       vertical-align: top !important;
-        //       margin-top: 5px;
-        //     }
-        //   }
+        & > .drawing-item-cell {
+          // display: none;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 22px;
+          height: 22px;
+          line-height: 22px;
+          text-align: center;
+          font-size: 12px;
+          cursor: pointer;
+          z-index: 1;
+          color: @component-background;
+
+          i {
+            color: #fff;
+          }
+          .anticon {
+            vertical-align: top !important;
+            margin-top: 5px;
+          }
+        }
       }
       .active-from-item {
         & > .ant-form-item {
@@ -442,21 +438,21 @@
         top: 30px;
         font-size: 14px;
       }
-      // .table-grid {
-      //   width: 100%;
-      //   text-align: center;
-      //   border-collapse: collapse;
-      //   table-layout: fixed;
-      //   .table-cell {
-      //     min-height: 75px !important;
-      //     overflow: auto;
-      //     padding-top: 10px;
-      //   }
-      //   .drawing-row-item {
-      //     padding: 0 2px;
-      //     text-align: left;
-      //   }
-      // }
+      .table-grid {
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+        table-layout: fixed;
+        .table-cell {
+          min-height: 75px !important;
+          overflow: auto;
+          padding-top: 10px;
+        }
+        .drawing-row-item {
+          padding: 0 2px;
+          text-align: right;
+        }
+      }
     }
   }
 }

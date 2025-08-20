@@ -738,4 +738,41 @@ export const layoutComponents = [
     header: '卡片容器',
     shadow: 'never',
   },
+  {
+    __config__: {
+      ferKey: 'tableGrid',
+      label: '表格容器',
+      labelWidth: undefined,
+      showLabel: false,
+      tag: 'Table',
+      className: [],
+      defaultValue: [],
+      layout: 'rowFormItem',
+      span: 24,
+      dragDisabled: false,
+      noShow: false,
+      children: [
+        {
+          __config__: {
+            ferKey: 'tableGridTr',
+            children: [
+              {
+                __config__: {
+                  ferKey: 'tableGridTd',
+                  merged: false,
+                  colspan: 1,
+                  rowspan: 1,
+                  children: [],
+                  backgroundColor: '',
+                },
+              },
+            ],
+          },
+        },
+      ],
+      borderType: 'solid', // 表格边框
+      // borderColor: '#E2E0E0',
+      borderWidth: 1, // 边框宽度
+    },
+  },
 ];

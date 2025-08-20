@@ -1,6 +1,6 @@
 <script lang="tsx">
   import { defineComponent, h } from 'vue';
-  import { CopyOutlined, DeleteOutlined } from '@ant-design/icons-vue';
+  import { CopyOutlined, DeleteOutlined, InsertRowBelowOutlined, InsertRowRightOutlined, TableOutlined } from '@ant-design/icons-vue';
   import draggable from 'vuedraggable';
   import { BasicHelp } from '@/components/Basic/index';
   import render from '@/helper/render';
@@ -35,6 +35,7 @@
           const gutter = element.__config__?.layout === 'colFormItem' && props.formConf?.gutter ? props.formConf.gutter : 0;
           const rightDistance = gutter;
           const { onCopyItem, onDeleteItem } = attrs as unknown as AttrsType;
+
           const tableSetting = (element, isTableGrid) => {
             const { onAddRow, onAddCol } = attrs as unknown as AttrsType;
             if (!isTableGrid) return null;
@@ -46,7 +47,7 @@
                   onAddRow(element);
                   event.stopPropagation();
                 }}>
-                <i class="icon-ym icon-ym-generator-insertRow" />
+                <a-button shape="circle" icon={h(InsertRowBelowOutlined)} />
               </span>,
               <span
                 class=" drawing-item-action-item drawing-item-add-col"
@@ -55,38 +56,117 @@
                   onAddCol(element);
                   event.stopPropagation();
                 }}>
-                <i class="icon-ym icon-ym-generator-insertCol" />
+                <a-button shape="circle" icon={h(InsertRowRightOutlined)} />
               </span>,
             ];
           };
+
           return (
             <div class="drawing-item-action" style={{ '--rightDistance': rightDistance + 10 + 'px' }}>
               {tableSetting(element, isTableGrid)}
-              <div class="drawing-item-action-container">
-                <span
-                  class="drawing-item-action-item drawing-item-copy"
-                  title={t('common.copyText')}
-                  onClick={event => {
-                    onCopyItem(element, parent);
-                    event.stopPropagation();
-                  }}>
-                  <a-button shape="circle" icon={h(CopyOutlined)} />
+              <span
+                class="drawing-item-action-item drawing-item-copy"
+                title={t('common.copyText')}
+                onClick={event => {
+                  onCopyItem(element, parent);
+                  event.stopPropagation();
+                }}>
+                <a-button shape="circle" icon={h(CopyOutlined)} />
+              </span>
+              <a-popconfirm
+                title={t('formGenerator.delComponentTip')}
+                class="drawing-item-action-item drawing-item-delete"
+                cancelText={t('common.cancelText')}
+                okText={t('common.okText')}
+                onConfirm={_ => {
+                  onDeleteItem(index, parent);
+                }}>
+                <span title={t('common.delText')}>
+                  <a-button shape="circle" icon={h(DeleteOutlined)} />
                 </span>
-                <a-popconfirm
-                  title={t('formGenerator.delComponentTip')}
-                  class="drawing-item-action-item drawing-item-delete"
-                  cancelText={t('common.cancelText')}
-                  okText={t('common.okText')}
-                  onConfirm={_ => {
-                    onDeleteItem(index, parent);
-                  }}>
-                  <span title={t('common.delText')}>
-                    <a-button shape="circle" icon={h(DeleteOutlined)} />
-                  </span>
-                </a-popconfirm>
-              </div>
+              </a-popconfirm>
             </div>
           );
+        },
+        // 表格项布局按钮
+        cellSetting(element, rowIndex, colIndex) {
+          console.log('---', element, rowIndex, colIndex);
+          const {
+            onHandleTableSetting,
+            onHandleShowMenu,
+            mergeLeftColDisabled,
+            mergeRightColDisabled,
+            mergeWholeRowDisabled,
+            mergeAboveRowDisabled,
+            mergeBelowRowDisabled,
+            mergeWholeColDisabled,
+            undoMergeRowDisabled,
+            undoMergeColDisabled,
+            deleteWholeColDisabled,
+            deleteWholeRowDisabled,
+          } = attrs as unknown as any;
+
+          const slots = {
+            overlay: () => {
+              return (
+                <a-menu
+                  onClick={({ key }) => {
+                    onHandleTableSetting(key, element);
+                  }}>
+                  <a-menu-item key="1">插入左侧列</a-menu-item>
+                  <a-menu-item key="2">插入右侧列</a-menu-item>
+                  <a-menu-item key="3">插入上方行</a-menu-item>
+                  <a-menu-item key="4">插入下方行</a-menu-item>
+                  <a-menu-divider />
+                  <a-menu-item key="5" disabled={mergeLeftColDisabled}>
+                    向左合并
+                  </a-menu-item>
+                  <a-menu-item key="6" disabled={mergeRightColDisabled}>
+                    向右合并
+                  </a-menu-item>
+                  <a-menu-item key="7" disabled={mergeWholeRowDisabled}>
+                    合并整行
+                  </a-menu-item>
+                  <a-menu-divider />
+                  <a-menu-item key="8" disabled={mergeAboveRowDisabled}>
+                    向上合并
+                  </a-menu-item>
+                  <a-menu-item key="9" disabled={mergeBelowRowDisabled}>
+                    向下合并
+                  </a-menu-item>
+                  <a-menu-item key="10" disabled={mergeWholeColDisabled}>
+                    合并整列
+                  </a-menu-item>
+                  <a-menu-divider />
+                  <a-menu-item key="11" disabled={undoMergeRowDisabled}>
+                    撤销行合并
+                  </a-menu-item>
+                  <a-menu-item key="12" disabled={undoMergeColDisabled}>
+                    撤销列合并
+                  </a-menu-item>
+                  <a-menu-divider />
+                  <a-menu-item key="13" disabled={deleteWholeColDisabled}>
+                    删除整列
+                  </a-menu-item>
+                  <a-menu-item key="14" disabled={deleteWholeRowDisabled}>
+                    删除整行
+                  </a-menu-item>
+                </a-menu>
+              );
+            },
+          };
+          return [
+            <span class="drawing-item-cell" v-slots={slots}>
+              <a-dropdown
+                v-slots={slots}
+                trigger="click"
+                onOpenChange={visible => {
+                  if (visible) onHandleShowMenu(element, rowIndex, colIndex);
+                }}>
+                <a-button shape="circle" icon={h(TableOutlined)} />
+              </a-dropdown>
+            </span>,
+          ];
         },
       };
 
@@ -247,6 +327,66 @@
                     })}
                   </a-tabs>
                   {components.itemBtns(element, index, parent)}
+                </a-row>
+              </a-col>
+            );
+          }
+
+          if (config.ferKey === 'tableGrid') {
+            return (
+              <a-col span={config.span} data-draggable={true} draggable={false}>
+                <a-row
+                  class={className + ' drawing-row-item-row drawing-row-item-table-grid'}
+                  onClick={event => {
+                    onActiveItem(element);
+                    event.stopPropagation();
+                  }}>
+                  <table class="table-grid">
+                    <tbody>
+                      {element.__config__.children.map((item, rowIndex) => {
+                        return (
+                          <tr>
+                            {item.__config__.children.map((it, colIndex) => {
+                              const slots = {
+                                item: ({ element: childElement, index }) => {
+                                  return renderChildren(childElement, index, it.__config__.children);
+                                },
+                              };
+                              let childGroup = { name: 'componentsGroup', put: (...arg) => put(...arg, it) };
+                              const onChildEnd = (...arg) => end(...arg, activeData, it);
+                              const childClassName = props.activeId === it.__config__.formId ? 'drawing-row-item active-from-item' : 'drawing-row-item';
+                              if (it.__config__.merged) return '';
+                              return (
+                                <td
+                                  class={childClassName}
+                                  colspan={it.__config__.colspan || 1}
+                                  rowspan={it.__config__.rowspan || 1}
+                                  onClick={event => {
+                                    onActiveItem(it);
+                                    event.stopPropagation();
+                                  }}>
+                                  <a-col>
+                                    <a-row>
+                                      <draggable
+                                        v-model={it.__config__.children}
+                                        v-slots={slots}
+                                        item-key="renderKey"
+                                        animation={300}
+                                        group={childGroup}
+                                        onEnd={onChildEnd}
+                                        class="drag-wrapper table-cell"></draggable>
+                                    </a-row>
+                                  </a-col>
+                                  {components.cellSetting(element, rowIndex, colIndex)}
+                                </td>
+                              );
+                            })}
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                  {components.itemBtns(element, index, parent, true)}
                 </a-row>
               </a-col>
             );

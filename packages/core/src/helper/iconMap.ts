@@ -22,6 +22,7 @@ import {
   CreditCardOutlined,
   LayoutOutlined,
   TagOutlined,
+  TableOutlined,
 } from '@ant-design/icons-vue';
 
 export const iconMap = {
@@ -50,4 +51,5 @@ export const iconMap = {
   ARow: LayoutOutlined,
   ATab: TagOutlined,
   ACard: CreditCardOutlined,
+  Table: TableOutlined,
 };

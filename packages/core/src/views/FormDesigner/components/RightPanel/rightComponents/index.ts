@@ -23,3 +23,5 @@ export { default as RCollapse } from './RCollapse.vue';
 export { default as RRow } from './RRow.vue';
 export { default as RTab } from './RTab.vue';
 export { default as RCard } from './RCard.vue';
+export { default as RTableGrid } from './RTableGrid.vue';
+export { default as RTableGridTd } from './RTableGridTd.vue';

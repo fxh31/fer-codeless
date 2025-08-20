@@ -8,7 +8,7 @@
     <div class="field-box" v-if="activeData?.__config__ && activeData.__config__.ferKey">
       <ScrollContainer>
         <a-form :colon="false" layout="vertical" v-show="activeKey === 'field'" class="right-board-form">
-          <a-form-item label="组件类型">
+          <a-form-item label="组件类型" v-if="!['tableGridTr', 'tableGridTd'].includes(activeData.__config__.ferKey)">
             <a-input v-model:value="getCompName" disabled />
           </a-form-item>
           <div v-if="activeData.__vModel__ !== undefined && !noVModelList.includes(ferKey)">
@@ -68,6 +68,7 @@
   import { BasicHelp } from '@/components/Basic';
 
   const props = defineProps(['activeData', 'formConf', 'drawingList', 'formInfo']);
+
   const attrs = useAttrs();
   const [registerScriptModal, { openModal: openScriptModal }] = useModal();
   const state = reactive({
