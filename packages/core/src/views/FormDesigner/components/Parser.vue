@@ -97,6 +97,39 @@
             );
           }
 
+          if (config.ferKey === 'tableGrid') {
+            return (
+              <a-col span={config.span}>
+                <table
+                  class="table-grid-box"
+                  style={{ '--borderType': config.borderType, '--borderColor': config.borderColor, '--borderWidth': config.borderWidth + 'px' }}>
+                  <tbody>
+                    {config.children.map(item => {
+                      return (
+                        <tr>
+                          {item.__config__.children.map(it => {
+                            const child = renderChildren(it);
+                            if (it.__config__.merged) return '';
+                            return (
+                              <td
+                                colspan={it.__config__.colspan || 1}
+                                rowspan={it.__config__.rowspan || 1}
+                                style={{ '--backgroundColor': it.__config__.backgroundColor, padding: '0px' }}>
+                                <a-col style={{ padding: '0px' }}>
+                                  <a-row gutter={state.formConfCopy.gutter || 15}>{child}</a-row>
+                                </a-col>
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </a-col>
+            );
+          }
+
           if (config.ferKey === 'tab') {
             return (
               <a-col span={config.span} class={props.formConf.formStyle} style={{ marginBottom: '10px' }}>

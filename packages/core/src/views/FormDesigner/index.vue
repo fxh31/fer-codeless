@@ -445,7 +445,6 @@
     }
   }
   function handleTableSetting(e, element) {
-    console.log(state.colIndex, state.rowIndex);
     switch (e) {
       case '1':
         //插入左侧列

@@ -90,7 +90,6 @@
         },
         // 表格项布局按钮
         cellSetting(element, rowIndex, colIndex) {
-          console.log('---', element, rowIndex, colIndex);
           const {
             onHandleTableSetting,
             onHandleShowMenu,

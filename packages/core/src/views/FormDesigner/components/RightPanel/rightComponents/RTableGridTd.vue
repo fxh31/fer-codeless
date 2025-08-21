@@ -39,7 +39,4 @@
   function handleTableGrid(key) {
     onHandleTableSetting(key, curEl);
   }
-
-  console.log(onHandleTableSetting, 'aa');
-  console.log(curEl);
 </script>
