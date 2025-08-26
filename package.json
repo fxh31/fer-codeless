@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "pnpm --filter ./packages/core build"
+    "build": "pnpm --filter ./packages/form-designer build",
+    "dev:form": "pnpm --filter ./packages/form-designer dev"
   },
   "keywords": [],
   "author": "",

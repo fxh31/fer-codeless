@@ -40,7 +40,7 @@
           const globalLabelWidth = props.formConf.labelWidth;
           let labelCol = {};
           if (props.formConf.labelPosition !== 'top' && config.showLabel) {
-            const labelWidth = (config.labelWidth || globalLabelWidth) + 'px';
+            let labelWidth = (config.labelWidth || globalLabelWidth) + 'px';
             if (!config.showLabel) labelWidth = '0px';
             labelCol = { style: { width: labelWidth } };
           }
