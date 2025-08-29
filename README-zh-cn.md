@@ -1,6 +1,6 @@
 # 简介
 
-本项目构建一个动态表单生成器。
+本项目构建一个低代码平台主要功能示例。
 
 - 项目架构：pnpm + workspace
 - 主要开发依赖：vue3 + ant-design-vue
@@ -15,15 +15,17 @@
 fer-codeless/
 │
 ├── packages/
-│ ├── core/ # 主要组件代码
+│ ├── form-designer/ # 表单设计器
 │ └── utils/ # 项目工具函数
 └── ...
 ```
 
-主要代码在 core 目录下：
+### form-designer
+
+表单设计器代码结构。
 
 ```text
-core/
+form-designer/
 │
 ├── src/ # 源代码目录
 │ ├── components/ # 公共组件
@@ -43,13 +45,11 @@ core/
 └── ...
 ```
 
-### 添加新的组件
+#### 添加新的组件
 
 自定义添加组件所需要修改的文件如下：
 
 ```text
-core/
-│
 ├── src/
 │ ├── components/ # 在此编写公共或其他全局组件
 │ │ ├── Container/

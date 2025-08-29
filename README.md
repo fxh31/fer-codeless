@@ -2,7 +2,7 @@ English | [中文](./README-zh-cn.md)
 
 # Introduction
 
-This project builds a dynamic form generator.
+This project builds a low-code platform main function example.
 
 - Project architecture: pnpm + workspace
 - Main development dependencies: vue3 + ant-design-vue
@@ -17,15 +17,17 @@ The main project structure is as follows:
 fer-codeless/
 │
 ├── packages/
-│ ├── core/ # Main component code
+│ ├── form-designer/ # Form designer
 │ └── utils/ # Project utility functions
 └── ...
 ```
 
-The main code is in the core directory:
+### form-designer
+
+Form designer code structure.
 
 ```text
-core/
+form-designer/
 │
 ├── src/ # Source code directory
 │ ├── components/ # Public components
@@ -45,13 +47,11 @@ core/
 └── ...
 ```
 
-### Adding New Components
+#### Adding New Components
 
 Files that need to be modified when custom adding components are as follows:
 
 ```text
-core/
-│
 ├── src/
 │ ├── components/ # Write public or other global components here
 │ │ ├── Container/
