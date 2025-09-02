@@ -11,3 +11,6 @@ export * from './src/fer';
 
 export * from './src/file/download';
 export * from './src/bem';
+
+// vite 相关配置工具函数
+export * from './src/vite/index';
