@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "pnpm --filter ./packages/form-designer build",
-    "dev:form": "pnpm --filter ./packages/form-designer dev"
+    "dev": "pnpm --filter ./apps/vue-container dev",
+    "dev:form": "pnpm --filter ./packages/form-designer dev",
+    "test-dev": "concurrently -n \"CONTAINER,FORM\" -c \"blue.bold,green.bold\" \"pnpm --filter ./apps/vue-container dev\" \"pnpm --filter ./packages/form-designer dev\""
   },
   "keywords": [],
   "author": "",
